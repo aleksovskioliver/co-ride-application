@@ -1,0 +1,13 @@
+.navbar {
+
+    background-color: var(--dark-color);
+}
+
+.navbar-brand {
+    color: var(--light-color);
+}
+
+.link {
+    color: #182628;
+    text-decoration: none;
+}

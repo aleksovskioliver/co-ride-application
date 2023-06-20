@@ -1,0 +1,8 @@
+.btn {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+}
+
+.search-sec {
+    background-color: var(--main-bg-color);
+}

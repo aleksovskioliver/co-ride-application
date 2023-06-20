@@ -1,0 +1,15 @@
+<nav class="navbar navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" routerLink="/">CoRide</a>
+        <div *ngIf="!isLoggedIn">
+            <a routerLink="/register" class="btn btn-dark me-2">Register</a>
+            <a routerLink="/login" class="btn btn-dark">Login</a>
+        </div>
+        <div *ngIf="isLoggedIn && loggedInUser" class="navbar-nav">
+            <div class="d-flex align-items-center">
+                <a class="nav-link me-2" routerLink="/profile">{{loggedInUser.email}}</a>
+                <a (click)="logout()" class="btn btn-sm btn-light">Logout</a>
+            </div>
+        </div>
+    </div>
+</nav>

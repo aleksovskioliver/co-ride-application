@@ -1,0 +1,13 @@
+.btn {
+    background-color: var(--main-dark-color);
+    color: var(--light-color);
+}
+
+.map{
+    min-height: 800px;
+    background-color: var(--main-bg-color);
+}
+
+.search {
+    background-color: var(--main-bg-color);
+}
