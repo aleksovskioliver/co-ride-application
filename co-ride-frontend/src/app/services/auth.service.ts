@@ -11,7 +11,7 @@ import { UserDTO } from '../models/UserDTO';
 })
 export class AuthService {
 
-  url = 'http://localhost:8080'
+  url = 'http://localhost:8084'
 
   constructor(private http: HttpClient) { }
 

@@ -5,13 +5,11 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { GoogleMapsModule } from '@angular/google-maps'
 import { NgxPaginationModule } from 'ngx-pagination'
 
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReservationComponent } from './components/reservation/reservation.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { RegisterComponent } from './components/register/register.component';
-
 
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -28,6 +26,7 @@ import { VehicleUpdateComponent } from './components/profile/vehicle-update/vehi
 import { UpdateFormComponent } from './components/reservation-form/update-form/update-form.component';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCarSide, faUserPen, faCircleUser, faCoins, faPhone, faRoute, faRightLong, faCar } from '@fortawesome/free-solid-svg-icons';
+import { DialogComponent } from './components/dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +45,8 @@ import { faCarSide, faUserPen, faCircleUser, faCoins, faPhone, faRoute, faRightL
     CreatedComponent,
     UpdateComponent,
     VehicleUpdateComponent,
-    UpdateFormComponent
+    UpdateFormComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,

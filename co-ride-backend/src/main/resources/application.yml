@@ -1,0 +1,15 @@
+server:
+    port: 8084
+
+spring:
+    datasource:
+        url: jdbc:postgresql://localhost:5432/co-ride
+        username: postgres
+        password: admin
+    jpa:
+        show-sql: true
+        hibernate:
+            ddl-auto: validate
+    flyway:
+        locations:
+          - classpath:db/migration

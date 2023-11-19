@@ -11,7 +11,7 @@ import { UserDTO } from '../models/UserDTO';
 })
 export class UserService {
 
-  url = 'http://localhost:8080/api/user'
+  url = 'http://localhost:8084/api/user'
 
   constructor(private http: HttpClient) { }
 
@@ -29,6 +29,10 @@ export class UserService {
 
   updateUser(id: number, user: UserDTO): Observable<UserDTO>{
     return this.http.put<UserDTO>(`http://localhost:8080/api/user/update/${id}`, user);
+  }
+
+  rateDriver(driverId: number, rating: number): Observable<void> {
+    return this.http.put<void>(`${this.url}/user/rateDriver/${driverId}?rating=${rating}`, null);
   }
 
 }

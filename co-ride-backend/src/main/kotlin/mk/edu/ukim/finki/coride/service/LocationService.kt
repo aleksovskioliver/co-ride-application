@@ -13,7 +13,7 @@ class LocationService(private val locationRepository: LocationRepository) {
     }
 
     fun create(newLocation: CreateNewLocation): Location{
-        return locationRepository.save(Location(newLocation.city,newLocation.lat,newLocation.lng,newLocation.country))
+        return locationRepository.save(Location(0,newLocation.city,newLocation.lat,newLocation.lng,newLocation.country))
     }
 
 }

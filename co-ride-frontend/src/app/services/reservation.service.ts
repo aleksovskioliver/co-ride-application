@@ -12,7 +12,7 @@ import { ReservationUpdateDTO } from '../models/ReservationUpdateDTO';
 })
 export class ReservationService {
 
-  url = "http://localhost:8080/api"
+  url = "http://localhost:8084/api"
 
   constructor(private http: HttpClient) { }
 
@@ -53,7 +53,7 @@ export class ReservationService {
   }
 
   getReservationById(id: number): Observable<Reservation>{
-    return this.http.get<Reservation>(`http://localhost:8080/api/reservation/find/${id}`);
+    return this.http.get<Reservation>(`${this.url}/reservation/find/${id}`);
   }
 
   getLocations(): Observable<MyLocation[]> {
