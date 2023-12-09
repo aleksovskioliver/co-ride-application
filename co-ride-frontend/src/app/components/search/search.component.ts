@@ -28,9 +28,10 @@ export class SearchComponent implements OnInit {
     this.route.queryParams.pipe(
       debounceTime(300),
       distinctUntilChanged(),
-      switchMap(queryParams=>this.service.getReservations(this.searchField.value,this.searchField2.value))
+      switchMap(queryParams=>this.service.getReservations(this.searchField.value as string,this.searchField2.value as string))
     ).subscribe({
       next: (data)=>{
+        console.log('data', data)
         this.loading = false
         this.reservations = data
       },

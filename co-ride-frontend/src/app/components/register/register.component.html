@@ -7,10 +7,10 @@
 
         <div class="row">
           <div class="col form-group">
-            <label>First Name</label>
             <div class="input-group">
               <span class="input-group-text"><i class="fas fa-user"></i></span>
               <input type="text" formControlName="firstname" class="form-control"
+                     placeholder="First Name"
                      [ngClass]="{ 'is-invalid': submitted && f['firstname'].errors }"/>
             </div>
             <div *ngIf="submitted && f['firstname'].errors" class="invalid-feedback">
@@ -19,10 +19,10 @@
           </div>
 
           <div class="col form-group">
-            <label>Last Name</label>
             <div class="input-group">
               <span class="input-group-text"><i class="fas fa-user"></i></span>
               <input type="text" formControlName="lastname" class="form-control"
+                     placeholder="Last Name"
                      [ngClass]="{ 'is-invalid': submitted && f['lastname'].errors }"/>
             </div>
             <div *ngIf="submitted && f['lastname'].errors" class="invalid-feedback">
@@ -32,10 +32,10 @@
         </div>
 
         <div class="form-group">
-          <label>Phone number</label>
           <div class="input-group">
             <span class="input-group-text"><i class="fas fa-phone"></i></span>
             <input type="text" formControlName="phonenumber" class="form-control" appPhoneMask
+                   placeholder="Phone number"
                    [ngClass]="{ 'is-invalid': submitted && f['phonenumber'].errors }"/>
           </div>
           <div *ngIf="submitted && f['phonenumber'].errors" class="invalid-feedback">
@@ -44,10 +44,10 @@
         </div>
 
         <div class="form-group">
-          <label>Email</label>
           <div class="input-group">
             <span class="input-group-text"><i class="fas fa-envelope"></i></span>
             <input type="text" formControlName="email" class="form-control"
+                   placeholder="Email"
                    [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"/>
           </div>
           <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
@@ -57,10 +57,10 @@
         </div>
 
         <div class="form-group">
-          <label>Password</label>
           <div class="input-group">
             <span class="input-group-text"><i class="fas fa-lock"></i></span>
             <input type="password" formControlName="password" class="form-control"
+                   placeholder="Password"
                    [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"/>
           </div>
           <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
@@ -75,10 +75,10 @@
         </div>
 
         <div class="form-group">
-          <label>Confirm Password</label>
           <div class="input-group">
             <span class="input-group-text"><i class="fas fa-lock"></i></span>
             <input type="password" formControlName="confirmPassword" class="form-control"
+                   placeholder="Confirm Password"
                    [ngClass]="{ 'is-invalid': submitted && f['confirmPassword'].errors }"/>
           </div>
           <div *ngIf="submitted && f['confirmPassword'].errors" class="invalid-feedback">
@@ -93,7 +93,7 @@
 
         <div class="d-flex justify-content-around my-3">
           <div>
-            <input class="btn-check" id="rider" type="radio" value="rider" name="role"
+            <input class="btn-primary-color btn-check" id="rider" type="radio" value="rider" name="role"
                    formControlName="role">
             <label class="btn btn-outline-dark" for="rider">
               <i class="fas fa-user"></i> Rider
@@ -115,28 +115,28 @@
           <h4 class="text-center">Enter vehicle</h4>
 
           <div class="form-group">
-            <label>Make</label>
             <div class="input-group">
               <span class="input-group-text"><i class="fas fa-car"></i></span>
               <input type="text" formControlName="make" class="form-control"
+                     placeholder="Make"
                      [ngClass]="{ 'is-invalid': submitted && f['make'].errors }"/>
             </div>
           </div>
 
           <div class="form-group">
-            <label>Model</label>
             <div class="input-group">
               <span class="input-group-text"><i class="fas fa-car"></i></span>
               <input type="text" formControlName="model" class="form-control"
+                     placeholder="Model"
                      [ngClass]="{ 'is-invalid': submitted && f['model'].errors }"/>
             </div>
           </div>
 
           <div class="form-group">
-            <label>Seats</label>
             <div class="input-group">
               <span class="input-group-text"><i class="fas fa-chair"></i></span>
               <input type="text" formControlName="seats" class="form-control"
+                     placeholder="Seats"
                      [ngClass]="{ 'is-invalid': submitted && f['seats'].errors }"/>
             </div>
           </div>
@@ -151,7 +151,7 @@
       </div>
 
       <div class="form-group">
-        <button type="submit" class="btn btn-dark form-control">Register</button>
+        <button type="submit" class="btn btn-custom form-control">Register</button>
       </div>
 
     </form>

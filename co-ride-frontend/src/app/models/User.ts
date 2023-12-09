@@ -10,5 +10,6 @@ export interface User {
     password: string;
     role: string;
     vehicle: Vehicle | null;
-    reservation: Reservation[];
+    reservations: Reservation[];
+    ratings: number[];
 }

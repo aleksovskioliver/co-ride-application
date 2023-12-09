@@ -1,15 +1,16 @@
-<nav class="navbar navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" routerLink="/">CoRide</a>
-        <div *ngIf="!isLoggedIn">
-            <a routerLink="/register" class="btn btn-dark me-2">Register</a>
-            <a routerLink="/login" class="btn btn-dark">Login</a>
-        </div>
-        <div *ngIf="isLoggedIn && loggedInUser" class="navbar-nav">
-            <div class="d-flex align-items-center">
-                <a class="nav-link me-2" routerLink="/profile">{{loggedInUser.email}}</a>
-                <a (click)="logout()" class="btn btn-sm btn-light">Logout</a>
-            </div>
-        </div>
+<mat-toolbar class="header-toolbar" color="primary">
+  <span class="navbar-brand"><a routerLink="/">CoRide</a></span>
+  <span class="spacer"></span>
+  <div *ngIf="!isLoggedIn" class="button-group">
+    <button mat-raised-button class="register-button" color="accent">Register</button>
+    <button mat-raised-button class="login-button" color="primary" routerLink="/login">Login</button>
+  </div>
+  <div *ngIf="isLoggedIn && loggedInUser" class="navbar-nav">
+    <div class="d-flex align-items-center">
+      <span class="user-email" mat-button routerLink="/profile">{{loggedInUser.email}}</span>
+      <button mat-icon-button (click)="logout()">
+        <mat-icon>exit_to_app</mat-icon>
+      </button>
     </div>
-</nav>
+  </div>
+</mat-toolbar>

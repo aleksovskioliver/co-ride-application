@@ -48,7 +48,7 @@ class UserController(private val userService: UserService) {
             is GetUserResponseSuccess -> user
             is GetUserResponseFailed -> throw UserNotFoundException("User not found")
         }
-        return user.user.reservation
+        return user.user.reservations
     }
 
 }

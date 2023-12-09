@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import {AuthenticationRequest} from "../../models/AuthenticationRequest";
 
 @Component({
   selector: 'app-login',
@@ -31,8 +32,8 @@ export class LoginComponent {
     this.errorMessage = ''
 
     if (this.form.valid) {
-      this.auth.loginUser(this.form.value).subscribe({
-        next: () => {          
+      this.auth.loginUser(this.form.value as AuthenticationRequest).subscribe({
+        next: () => {
           this.router.navigateByUrl("/").then(() => {window.location.reload()})
         },
         error: error => {

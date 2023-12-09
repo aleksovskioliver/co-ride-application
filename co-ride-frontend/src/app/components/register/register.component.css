@@ -36,3 +36,15 @@ input {
 input:focus {
   background-color: #f8f9fa; /* Lighter color on focus */
 }
+
+.btn-outline-dark{
+  background-color: var(--main-bg-color); /* Change the button color */
+  border: none;
+}
+.btn-check:checked + .btn{
+  background-color: var(--main-dark-color) !important;
+}
+
+.btn-custom{
+  background-color: var(--main-dark-color) !important;
+}

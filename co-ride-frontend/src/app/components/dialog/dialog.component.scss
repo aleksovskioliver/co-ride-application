@@ -1,0 +1,35 @@
+/* your-component.component.scss */
+
+// ... other styles ...
+
+$primary-color: #3f51b5; // Update this with your desired primary color
+$accent-color: #e91e63; // Update this with your desired accent color
+
+.dialog-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.dialog-content {
+    padding: 10px 0;
+}
+
+.body-text {
+    font-size: 1rem;
+    color: #666; /* Use a default text color or update it based on your design */
+}
+
+.dialog-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.payment-button {
+    flex-grow: 1;
+    margin: 0 5px;
+    background-color: $primary-color; /* Use your primary color for button background */
+    color: #fff; /* Use a contrasting text color, e.g., white */
+}
+
+/* Apply the Angular Material theme to the entire dialog */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';

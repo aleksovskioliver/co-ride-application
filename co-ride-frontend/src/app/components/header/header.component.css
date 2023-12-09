@@ -1,13 +1,38 @@
-.navbar {
-
-    background-color: var(--dark-color);
+.mat-toolbar.header-toolbar {
+  background: linear-gradient(to right, var(--gradient-color-1), var(--gradient-color-2));
+  color: var(--light-color);
+  justify-content: space-between;
+  padding: 0 16px;
+  border-bottom: 2px solid var(--main-dark-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.navbar-brand {
-    color: var(--light-color);
+.navbar-brand a {
+  color: var(--light-color);
+  text-decoration: none;
 }
 
-.link {
-    color: #182628;
-    text-decoration: none;
+.button-group {
+  display: flex;
+  gap: 8px;
 }
+
+.register-button,
+.login-button {
+  color: var(--main-dark-color);
+  font-weight: bold;
+  background-color: var(--light-color); /* Set default background color */
+}
+
+.register-button:hover,
+.login-button:hover {
+  background-color: var(--main-dark-color); /* Swap to main-dark-color on hover */
+  color: var(--light-color); /* Swap to light-color on hover */
+  transition: background-color 0.3s, color 0.3s; /* Add a smooth transition effect */
+}
+
+.user-email {
+  color: var(--light-color);
+}
+
+/* Add any additional styling as needed */

@@ -5,6 +5,8 @@ import { ReservationService } from 'src/app/services/reservation.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
+import {MatDialog} from "@angular/material/dialog";
+import {DialogComponent} from "../dialog/dialog.component";
 
 @Component({
   selector: 'app-reservation',
@@ -25,7 +27,8 @@ export class ReservationComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
     private service: ReservationService,
-    private mapService: MapService) { }
+    private mapService: MapService,
+    private dialog: MatDialog) { }
 
   ngOnInit(): void { }
 
@@ -33,21 +36,14 @@ export class ReservationComponent implements OnInit {
     this.errorMessage = '';
     this.success = false;
 
-    if (this.authService.isLoggedIn()) {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '400px',
+      data: {reservation: r}
+    });
 
-      this.service.addCustomerToReservation(r.id).subscribe({
-        next: () => {
-          r.availableSeats--
-          this.success = true;
-          window.location.reload();
-        },
-        error: error => {
-          this.errorMessage = error
-        }
-      })
-    } else {
-      this.router.navigateByUrl("/login")
-    }
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log('dialog close', result)
+    // });
   }
 
   unreserved(r: Reservation) {

@@ -1,15 +1,11 @@
 :root {
-  /* --main-bg-color: #65ccb8;
-  --secondary-bg-color: #57ba98;
-  --dark-color: #182628;
-  --light-color: #f2f2f2;
-  --main-dark-color: #3b945e; */
-
   --main-bg-color: #def2f1;
   --secondary-bg-color: #3aafa9;
   --dark-color: #17252a;
   --light-color: #feffff;
   --main-dark-color: #2b7a78;
+  --gradient-color-1: #3494e6; /* Start color of the gradient */
+  --gradient-color-2: #ec6ead; /* End color of the gradient */
 }
 
 html, body {
@@ -19,8 +15,6 @@ html, body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  /*background-color: var(--main-bg-color);*/
-  background: rgba(222, 242, 241, 0.8) url("/assets/background-image.jpg") center/cover no-repeat !important;
-  /*background-image: url("/assets/background-image.jpg") !important;*/
-  background-size: cover;
+  background: linear-gradient(to right, var(--gradient-color-1), var(--gradient-color-2));
+  color: var(--light-color); /* Set text color to a light color for better visibility */
 }

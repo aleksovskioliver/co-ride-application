@@ -22,13 +22,13 @@
   border: none;
 }
 
-.btn-dark {
-  background-color: var(--dark-color);
+.btn-primary {
+  background-color: var(--main-dark-color); /* Change the button color */
   border: none;
 }
 
-.btn-dark:hover {
-  background-color: #343a40; /* Darker color on hover */
+.btn-primary:hover {
+  background-color: #2b7a78; /* Darker color on hover */
 }
 
 .link-dark {

@@ -4,6 +4,7 @@ import mk.edu.ukim.finki.coride.api.request.CreateUserRequest
 import mk.edu.ukim.finki.coride.api.response.GetUserResponse
 import mk.edu.ukim.finki.coride.api.response.GetUserResponseFailed
 import mk.edu.ukim.finki.coride.api.response.GetUserResponseSuccess
+import mk.edu.ukim.finki.coride.domain.Reservation
 import mk.edu.ukim.finki.coride.domain.Role
 import mk.edu.ukim.finki.coride.domain.User
 import mk.edu.ukim.finki.coride.domain.exception.UserAlreadyExists
@@ -71,5 +72,10 @@ class UserService(
             user.vehicle = vehicleService.createVehicle(newUser.vehicle!!)
 
         return userRepository.save(user)
+    }
+    fun updateUserReservations(user: User, reservation: Reservation){
+        this.findUserById(user.id).copy(
+                reservations = user.reservations.plus(reservation).toMutableList()
+        ).let { userRepository.save(it) }
     }
 }

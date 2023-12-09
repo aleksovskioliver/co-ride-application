@@ -1,6 +1,8 @@
 server:
     port: 8084
 
+stripe:
+    secret-key: sk_test_51Kiay7IDTHvo6Uv1xLuSLhDwY3uX3eEjtKOaUe0AVZRXRvZ9g3kkOj1KohVp9gZCNz9cLh0SXPRmIanOsklNh42400NGl30Qop
 spring:
     datasource:
         url: jdbc:postgresql://localhost:5432/co-ride
@@ -9,7 +11,7 @@ spring:
     jpa:
         show-sql: true
         hibernate:
-            ddl-auto: validate
+            ddl-auto: update
     flyway:
         locations:
           - classpath:db/migration

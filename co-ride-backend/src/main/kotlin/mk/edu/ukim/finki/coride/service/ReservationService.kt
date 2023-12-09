@@ -68,7 +68,7 @@ class ReservationService(
                 reservation.availableSeats - 1
             )
         )
-        customer.reservation.add(savedReservation)
+        customer.reservations.add(savedReservation)
         userRepository.save(customer)
         return savedReservation
     }
@@ -87,7 +87,7 @@ class ReservationService(
                 reservation.availableSeats + 1
             )
         )
-        customer.reservation.remove(savedReservation)
+        customer.reservations.remove(savedReservation)
         userRepository.save(customer)
         return savedReservation
     }
