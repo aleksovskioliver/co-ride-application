@@ -1,31 +1,33 @@
 <section class="search-sec px-2 pt-2">
-    <div class="container p-0">
-        <div class="row">
-            <div class="col-lg-6 pe-0">
-                <input (keydown.enter)="getReservations()" [formControl]="searchField" type="search"
-                    class="form-control rounded-0" placeholder="Enter pickup city...">
-            </div>
+  <div class="container p-0">
+    <div class="row">
+      <div class="col-lg-6 pe-lg-2 mb-2 mb-lg-0">
+        <input (keydown.enter)="getReservations()" [formControl]="searchField" type="search"
+               class="form-control rounded-0" placeholder="Enter pickup city...">
+      </div>
 
-            <div class="col-lg-6 ps-0">
-                <input (keydown.enter)="getReservations()" [formControl]="searchField2" type="search"
-                    class="form-control rounded-0" placeholder="Enter drop city">
-            </div>
+      <div class="col-lg-6 ps-lg-2">
+        <input (keydown.enter)="getReservations()" [formControl]="searchField2" type="search"
+               class="form-control rounded-0" placeholder="Enter drop city">
+      </div>
 
-            <div>
-                <button type="button" class="btn form-control rounded-0" (click)="getReservations()">Search</button>
-            </div>
-        </div>
+      <div class="col-12 mt-2">
+        <button type="button" class="btn form-control rounded-0" (click)="getReservations()">Search</button>
+      </div>
     </div>
+  </div>
 </section>
 
 <div *ngIf="loading" class="d-flex align-items-center justify-content-center h-50">
-    <div class="spinner-border" role="status">
-        <span class="visually-hidden">Loading...</span>
-    </div>
+  <div class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
 </div>
 
-<div *ngIf="reservations.length == 0 && !loading" class="container">
-    <span class="text-muted">There are no active reservations</span>
+<div *ngIf="reservations.length == 0 && !loading" class="container mt-2">
+  <span class="text-muted">There are no active reservations</span>
 </div>
 
-<app-reservation *ngIf="!loading && reservations.length != 0" [reservations]="reservations"></app-reservation>
+<div *ngIf="!loading && reservations.length != 0" class="container mt-2">
+  <app-reservation [reservations]="reservations"></app-reservation>
+</div>

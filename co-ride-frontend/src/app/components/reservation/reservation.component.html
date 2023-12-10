@@ -5,65 +5,66 @@
   <div>You have successfully reserved your seat.</div>
   <div>Have a nice trip!</div>
 </div>
-<ul class="list-group">
-  <li *ngFor="let r of reservations | paginate: { id:'pagination2',  itemsPerPage: 3, currentPage: p }"
-    class="list-group-item page-item border-0 p-2">
-    <div class="reservation card" (click)="setMarker(r)">
-      <div class="card-header d-flex justify-content-between"
-        [ngClass]="!isExpired(r) && r.status == 'ACTIVE' ? 'text-success' : 'text-danger'">
-        <span>Seats left: {{ r.availableSeats }}</span>
-        <span>{{ isExpired(r) || r.status == 'FINISHED' ? 'FINISHED' : 'ACTIVE' }}</span>
-      </div>
-      <div class="card-body py-2">
-        <div class="d-flex align-items-center">
-          <div class="p-3">
-            <fa-icon [icon]="'route'" size="3x"></fa-icon>
-          </div>
-          <div>
-            <div class="d-flex">
-              <h5 class="m-0 me-2 card-title">{{ r.pickupLocation.city }}</h5>
-              <fa-icon [icon]="'right-long'" size="lg"></fa-icon>
-              <h5 class="m-0 ms-2 card-title">{{ r.dropoutLocation.city }}</h5>
+<div class="reservation-list">
+  <ul class="list-group">
+    <li *ngFor="let r of reservations | paginate: { id:'pagination2',  itemsPerPage: 5, currentPage: p }"
+        class="list-group-item page-item border-0 p-2">
+      <div class="reservation card" (click)="setMarker(r)">
+        <div class="card-header d-flex justify-content-between"
+             [ngClass]="!isExpired(r) && r.status == 'ACTIVE' ? 'text-success' : 'text-danger'">
+          <span>Seats left: {{ r.availableSeats }}</span>
+          <span>{{ isExpired(r) || r.status == 'FINISHED' ? 'FINISHED' : 'ACTIVE' }}</span>
+        </div>
+        <div class="card-body py-2">
+          <div class="d-flex align-items-center">
+            <div class="p-3">
+              <fa-icon [icon]="'route'" size="3x"></fa-icon>
             </div>
-            <p class="card-text">{{ formatTime(r.startTime) }} - {{ formatTime(r.endTime) }}</p>
-          </div>
-        </div>
-
-        <div class="d-flex justify-content-between mb-2 border-top border-bottom px-2">
-          <div>
-            <fa-icon [icon]="'circle-user'"></fa-icon> {{r.driver.firstName}} {{r.driver.lastName}}
-          </div>
-          <div>
-            <fa-icon [icon]="'phone'"></fa-icon> {{r.driver.phoneNumber}}
-          </div>
-          <div>
-            <fa-icon [icon]="'car-side'"></fa-icon> {{r.driver.vehicle?.make}} {{r.driver.vehicle?.model}}
-          </div>
-          <div>
-            <fa-icon [icon]="'coins'"></fa-icon> {{ r.tripCost }} den
-          </div>
-        </div>
-
-        <div>
-          <form *ngIf="r.status=='ACTIVE' && !admin && !customer" (ngSubmit)="reserved(r)" method="post">
             <div>
-              <button class="btn btn-sm btn-outline-success w-100" type="submit">RESERVE</button>
+              <div class="d-flex">
+                <h5 class="m-0 me-2 card-title">{{ r.pickupLocation.city }}</h5>
+                <fa-icon [icon]="'right-long'" size="lg"></fa-icon>
+                <h5 class="m-0 ms-2 card-title">{{ r.dropoutLocation.city }}</h5>
+              </div>
+              <p class="card-text">{{ formatTime(r.startTime) }} - {{ formatTime(r.endTime) }}</p>
             </div>
-          </form>
-          <form *ngIf="!admin && customer" (ngSubmit)="unreserved(r)" method="post">
-            <div>
-              <button class="btn btn-sm btn-outline-danger w-100" type="submit">CANCEL RESERVATION</button>
-            </div>
-          </form>
+          </div>
 
-        </div>
-        <div *ngIf="admin">
-          <ul>
-            <li *ngFor="let customer of r.customers">{{customer.email}}</li>
-          </ul>
+          <div class="d-flex justify-content-between mb-2 border-top border-bottom px-2">
+            <div>
+              <fa-icon [icon]="'circle-user'"></fa-icon> {{r.driver.firstName}} {{r.driver.lastName}}
+            </div>
+            <div>
+              <fa-icon [icon]="'phone'"></fa-icon> {{r.driver.phoneNumber}}
+            </div>
+            <div>
+              <fa-icon [icon]="'car-side'"></fa-icon> {{r.driver.vehicle?.make}} {{r.driver.vehicle?.model}}
+            </div>
+            <div>
+              <fa-icon [icon]="'coins'"></fa-icon> {{ r.tripCost }} den
+            </div>
+          </div>
+
+          <div>
+            <form *ngIf="r.status=='ACTIVE' && !admin && !customer" (ngSubmit)="reserved(r)" method="post">
+              <div>
+                <button class="btn btn-sm btn-outline-success w-100" type="submit">RESERVE</button>
+              </div>
+            </form>
+            <form *ngIf="!admin && customer" (ngSubmit)="unreserved(r)" method="post">
+              <div>
+                <button class="btn btn-sm btn-outline-danger w-100" type="submit">CANCEL RESERVATION</button>
+              </div>
+            </form>
+          </div>
+          <div *ngIf="admin">
+            <ul>
+              <li *ngFor="let customer of r.customers">{{customer.email}}</li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
-  </li>
-  <pagination-controls id='pagination2' (pageChange)="p = $event"></pagination-controls>
-</ul>
+    </li>
+  </ul>
+</div>
+<pagination-controls id='pagination2' (pageChange)="p = $event"></pagination-controls>

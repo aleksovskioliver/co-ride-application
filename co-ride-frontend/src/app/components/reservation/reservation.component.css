@@ -1,16 +1,46 @@
+.reservation-list {
+  max-height: 420px;
+  overflow-y: auto;
+}
+
 .reservation:hover {
-    background-color: whitesmoke;
-    cursor: pointer;
+  background-color: whitesmoke;
+  cursor: pointer;
 }
 
 .list-group-item {
-    background-color: var(--main-bg-color);
+  background-color: var(--main-bg-color);
+  margin-bottom: 10px;
 }
 
 .card {
-    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+}
+
+.card-header {
+  font-size: 12px;
+}
+
+.card-body {
+  padding: 8px;
+}
+
+.card-title {
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.card-text {
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.btn {
+  font-size: 12px;
+  padding: 4px 8px;
 }
 
 .alert {
-    margin: 8px 16px;
+  margin: 8px 16px;
+  font-size: 14px;
 }

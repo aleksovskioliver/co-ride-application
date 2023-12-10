@@ -1,8 +1,22 @@
 .btn {
-    background-color: var(--dark-color);
-    color: var(--light-color);
+  background-color: var(--dark-color);
+  color: var(--light-color);
 }
 
 .search-sec {
-    background-color: var(--main-bg-color);
+  background-color: var(--main-bg-color);
+}
+
+.form-control {
+  margin-bottom: 8px;
+}
+
+.spinner-border {
+  margin-top: 20px;
+}
+
+.text-muted {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
 }

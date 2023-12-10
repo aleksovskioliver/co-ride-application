@@ -1,15 +1,19 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="map col-md-6 p-0">
-            <app-map></app-map>
-        </div>
+<div class="dashboard-container">
+  <div class="map-container">
+    <app-map></app-map>
+  </div>
 
-        <div class="search p-0 col-md-6">
-            <button class="btn w-100 rounded-0 p-3" (click)="onClick()">
-                {{createReservation ? "Back" : "Create reservation"}}
-            </button>
-            <app-search *ngIf="!createReservation"></app-search>
-            <app-reservation-form *ngIf="createReservation"></app-reservation-form>
-        </div>
+  <div class="search-container">
+    <button class="dashboard-btn" (click)="onClick()">
+      {{ createReservation ? "Back" : "Create Reservation" }}
+    </button>
+
+    <div *ngIf="!createReservation" class="search-content">
+      <app-search></app-search>
     </div>
+
+    <div *ngIf="createReservation" class="reservation-form-content">
+      <app-reservation-form></app-reservation-form>
+    </div>
+  </div>
 </div>
