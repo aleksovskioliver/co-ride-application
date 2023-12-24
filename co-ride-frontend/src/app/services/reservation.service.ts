@@ -69,6 +69,6 @@ export class ReservationService {
   }
 
   updateReservation(id: number, reservation: ReservationUpdateDTO){
-    return this.http.put(`http://localhost:8080/api/reservation/update/${id}`, reservation);
+    return this.http.put(`http://localhost:8084/api/reservation/update/${id}`, reservation);
   }
 }

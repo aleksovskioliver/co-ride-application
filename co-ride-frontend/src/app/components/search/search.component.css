@@ -20,3 +20,8 @@
   text-align: center;
   margin-top: 20px;
 }
+
+ .btn-custom{
+   background-color: var(--main-dark-color) !important; /* Use your project's main dark color */
+
+ }

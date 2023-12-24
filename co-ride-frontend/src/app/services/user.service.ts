@@ -28,7 +28,7 @@ export class UserService {
   }
 
   updateUser(id: number, user: UserDTO): Observable<UserDTO>{
-    return this.http.put<UserDTO>(`http://localhost:8080/api/user/update/${id}`, user);
+    return this.http.put<UserDTO>(`http://localhost:8084/api/user/update/${id}`, user);
   }
 
   rateDriver(driverId: number, rating: number): Observable<void> {

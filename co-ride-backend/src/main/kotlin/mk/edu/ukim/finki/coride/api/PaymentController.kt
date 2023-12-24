@@ -1,6 +1,5 @@
 package mk.edu.ukim.finki.coride.api
 
-import com.stripe.model.Charge
 import mk.edu.ukim.finki.coride.api.request.ChargeRequest
 import mk.edu.ukim.finki.coride.api.request.Payload
 import mk.edu.ukim.finki.coride.service.StripeService

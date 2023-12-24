@@ -55,3 +55,22 @@ input {
 button:hover {
   background-color: #45a049; /* You can customize the hover color */
 }
+
+/* payment-form-dialog.component.css */
+
+/* ... Your existing styles ... */
+
+.card-element-custom {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid var(--main-dark-color);
+  border-radius: 4px;
+}
+
+/* Style the error message */
+.error-message {
+  color: #ff0000; /* Set the color for error messages */
+  margin-top: 5px;
+}
+
+/* ... Your other styles ... */

@@ -28,15 +28,15 @@
             </div>
 
         </div>
-        <div class="col">
+        <div *ngIf="reservations.length > 0" class="col">
             <div class="mt-3">
                 <h5>Your reservations: </h5>
                 <app-reservation [customer]="true" [reservations]="reservations"></app-reservation>
             </div>
         </div>
-        
+
     </div>
-    <div *ngIf="user.role.includes('DRIVER')" class="row justify-content-center mt-3">
+    <div *ngIf="user.role.includes('DRIVER') && driverReservations.length > 0" class="row justify-content-center mt-3">
         <div class="col-11">
             <h5>Created reservations: </h5>
             <app-created [admin]="true" [reservations]="driverReservations"></app-created>

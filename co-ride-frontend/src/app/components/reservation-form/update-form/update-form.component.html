@@ -5,25 +5,25 @@
             <div class="input-group mb-4">
                 <label for="startTime" class="input-group-text">Start Time</label>
                 <input type="datetime-local"
-                class="form-control" id="startTime" 
+                class="form-control" id="startTime"
       required [(ngModel)]="reservation.startTime" name="startTime">
             </div>
 
             <div class="input-group mb-4">
                 <label for="endTime" class="input-group-text">End Time</label>
                 <input type="datetime-local"
-                class="form-control" id="endTime" 
+                class="form-control" id="endTime"
       required [(ngModel)]="reservation.endTime" name="endTime">
             </div>
 
             <div class="input-group mb-4">
                 <label for="tripCost" class="input-group-text">den</label>
-                <input type="number" class="form-control" id="tripCost" 
+                <input type="number" class="form-control" id="tripCost"
           required [(ngModel)]="reservation.tripCost" name="lastripCosttName">
               </div>
-       
+
             <div class="form-group mt-4">
-              <button type="submit" class="btn btn-dark btn-lg form-control">Submit</button>
+              <button type="submit" class="btn btn-dark btn-lg form-control btn-custom">Submit</button>
             </div>
         </form>
         </div>

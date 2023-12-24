@@ -7,3 +7,8 @@
 .container{
     height: 100%;
 }
+
+.btn-custom{
+  background-color: var(--main-dark-color) !important; /* Use your project's main dark color */
+
+}
