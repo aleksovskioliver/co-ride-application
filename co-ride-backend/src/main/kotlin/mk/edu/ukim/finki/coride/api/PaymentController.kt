@@ -17,12 +17,9 @@ class PaymentController(
 
     @PostMapping
     fun createPaymentIntent(@RequestBody payload: Payload) {
-        // Extract values from the Map
         val frontEndStripeToken = payload.token
         val amount: Long = Math.round(123.0) * 100 //amount;
-        val stripeEmail = "aleksovskioliver64@gmail.com"
-        val chargeRequest: ChargeRequest = ChargeRequest(amount = amount, stripeToken = frontEndStripeToken, stripeEmail = stripeEmail, description = "test desc", currency = "EUR")
-        val charge: Charge = stripeService.charge(chargeRequest)
-
+        val chargeRequest = ChargeRequest(amount = amount, stripeToken = frontEndStripeToken, stripeEmail = payload.email, description = "test desc", currency = "EUR")
+        stripeService.charge(chargeRequest)
     }
 }

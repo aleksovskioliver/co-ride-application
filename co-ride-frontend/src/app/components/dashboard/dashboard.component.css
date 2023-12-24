@@ -4,17 +4,19 @@
 }
 
 .map-container {
-  flex: 1;
-  min-height: 500px;
-  max-height: 80vh;
+  flex: 0 0 35%;  /* 30% width, don't grow or shrink */
+  /*min-height: 500px;*/
+  /*max-height: 80vh;*/
   background-color: var(--main-bg-color);
   border: 1px solid var(--main-dark-color);
   border-radius: 10px;
   margin: 10px;
+  height: 640px !important;
+
 }
 
 .search-container {
-  flex: 1;
+  flex: 0 0 60%;  /* 30% width, don't grow or shrink */
   background-color: var(--main-bg-color);
   border: 1px solid var(--main-dark-color);
   border-radius: 10px;
@@ -25,7 +27,7 @@
 }
 
 .dashboard-btn {
-  background-color: var(--main-dark-color);
+  background-color: var(--main-dark-color) !important;
   color: var(--light-color);
   border: none;
   border-radius: 5px;

@@ -24,14 +24,13 @@ export class DialogComponent {
     this._dialogRef.close();
   }
 
-  payInCash() {
+  reserved(){
     if (this._authService.isLoggedIn()) {
       this._service.addCustomerToReservation(this.data.reservation.id).subscribe({
         next: () => {
-          console.log('in next', this.data.reservation.id);
+          console.log('in next', this.data);
           this.data.reservation.availableSeats--
           // this.success = true;
-          // window.location.reload();
           this._dialogRef.close();
         },
         error: error => {
@@ -40,7 +39,13 @@ export class DialogComponent {
       })
     } else {
       this._router.navigateByUrl("/login")
+      this._dialogRef.close();
+
     }
+  }
+
+  payInCash() {
+    this.reserved()
   }
 
   payOnline() {
@@ -53,9 +58,9 @@ export class DialogComponent {
       width: '400px', // Adjust the width as needed
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log('Payment form dialog closed', result);
-      // Add your handling logic here if needed
-    });
+    dialogRef.afterClosed().subscribe({
+      next: () => this.reserved(),
+      error: err =>  console.log("error message", err)
+    })
   }
 }

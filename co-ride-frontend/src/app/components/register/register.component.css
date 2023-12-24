@@ -46,5 +46,6 @@ input:focus {
 }
 
 .btn-custom{
+  color: white;
   background-color: var(--main-dark-color) !important;
 }

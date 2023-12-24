@@ -2,7 +2,7 @@ server:
     port: 8084
 
 stripe:
-    secret-key: sk_test_51Kiay7IDTHvo6Uv1xLuSLhDwY3uX3eEjtKOaUe0AVZRXRvZ9g3kkOj1KohVp9gZCNz9cLh0SXPRmIanOsklNh42400NGl30Qop
+    secret-key: sk_test_51Kiay7IDTHvo6Uv1StroqjLzgB1JcAAmlTNjROpsuroEVTj6Rlwd5KpBWgYxQFaPe5873qQx9nZ8eDvRY100Lhtc00KeUjT7BW
 spring:
     datasource:
         url: jdbc:postgresql://localhost:5432/co-ride

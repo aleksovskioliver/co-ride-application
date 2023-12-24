@@ -40,6 +40,10 @@
   padding: 4px 8px;
 }
 
+.btn:hover{
+  background-color: var(--main-dark-color) !important;
+}
+
 .alert {
   margin: 8px 16px;
   font-size: 14px;
