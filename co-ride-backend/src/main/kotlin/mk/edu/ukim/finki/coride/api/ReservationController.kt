@@ -2,6 +2,7 @@ package mk.edu.ukim.finki.coride.api
 
 import mk.edu.ukim.finki.coride.api.request.CreateReservationRequest
 import mk.edu.ukim.finki.coride.api.request.UpdateReservationRequest
+import mk.edu.ukim.finki.coride.api.response.ReservationResponse
 import mk.edu.ukim.finki.coride.domain.Reservation
 import mk.edu.ukim.finki.coride.domain.exception.CustomerAlreadyReservedException
 import mk.edu.ukim.finki.coride.domain.exception.CustomerIsNotInReservationException
@@ -21,7 +22,7 @@ class ReservationController(private val reservationService: ReservationService) 
         @RequestParam(required = false) pickupCity: String?,
         @RequestParam(required = false) dropoutCity: String?
     )
-            : List<Reservation> {
+            : List<ReservationResponse> {
         return if (pickupCity != null && (dropoutCity == null || dropoutCity == "")) {
             reservationService.filterReservationByPickupLocation(pickupCity)
         } else if ((pickupCity == null || pickupCity == "") && dropoutCity != null) {

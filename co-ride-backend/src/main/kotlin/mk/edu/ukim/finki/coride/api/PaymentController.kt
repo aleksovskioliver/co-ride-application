@@ -11,14 +11,16 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/api/payment")
 class PaymentController(
-        val stripeService: StripeService
+        val stripeService: StripeService,
+
 ) {
 
     @PostMapping
     fun createPaymentIntent(@RequestBody payload: Payload) {
-        val frontEndStripeToken = payload.token
-        val amount: Long = Math.round(123.0) * 100 //amount;
-        val chargeRequest = ChargeRequest(amount = amount, stripeToken = frontEndStripeToken, stripeEmail = payload.email, description = "test desc", currency = "EUR")
-        stripeService.charge(chargeRequest)
+//        val frontEndStripeToken = payload.token
+//        val amount: Long = Math.round(123.0) * 100
+//        val chargeRequest = ChargeRequest(amount = amount, stripeToken = frontEndStripeToken, description = "CoRide Payment", currency = "MKD")
+//
+        stripeService.charge(payload)
     }
 }

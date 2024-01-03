@@ -1,12 +1,14 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { MapService } from 'src/app/services/map.service';
-import { Reservation } from 'src/app/models/Reservation';
-import { ReservationService } from 'src/app/services/reservation.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { Router } from '@angular/router';
+import {Component, Input, OnInit} from '@angular/core';
+import {MapService} from 'src/app/services/map.service';
+import {Reservation} from 'src/app/models/Reservation';
+import {ReservationService} from 'src/app/services/reservation.service';
+import {AuthService} from 'src/app/services/auth.service';
+import {Router} from '@angular/router';
 import * as moment from 'moment';
 import {MatDialog} from "@angular/material/dialog";
 import {DialogComponent} from "../dialog/dialog.component";
+import {ReservationResponse} from "../../models/ReservationResponse";
+import {User} from "../../models/User";
 
 @Component({
   selector: 'app-reservation',
@@ -18,6 +20,7 @@ export class ReservationComponent implements OnInit {
   @Input() admin = false;
   @Input() customer = false;
   @Input() reservations: Reservation[] = []
+  @Input() reservationsR: ReservationResponse[] = []
   p: number = 1;
   errorMessage = '';
   success = false;
@@ -28,9 +31,11 @@ export class ReservationComponent implements OnInit {
     private authService: AuthService,
     private service: ReservationService,
     private mapService: MapService,
-    private dialog: MatDialog) { }
+    private dialog: MatDialog) {
+  }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+  }
 
   reserved(r: Reservation) {
     this.errorMessage = '';
@@ -77,5 +82,12 @@ export class ReservationComponent implements OnInit {
 
   isExpired(r: Reservation): boolean {
     return moment(r.endTime).isBefore(moment())
+  }
+
+  onRateChange(driver: User, event: any): void {
+    // Update the rating in your backend or perform other actions
+    const newRating = event.rating;
+
+    console.log(`New rating for ${driver.firstName} ${driver.lastName}: ${newRating}`);
   }
 }

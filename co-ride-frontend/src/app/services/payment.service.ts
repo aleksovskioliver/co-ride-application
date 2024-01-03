@@ -11,8 +11,8 @@ export class PaymentService {
   constructor(private http: HttpClient) {
   }
 
-  processPayment(token: string, name: string, email: string): Observable<any> {
-    const payload = {token, name, email};
+  processPayment(token: string, name: string, reservationId: number): Observable<any> {
+    const payload = {token, name, reservationId};
     return this.http.post(`${this.baseUrl}`, payload);
   }
 }

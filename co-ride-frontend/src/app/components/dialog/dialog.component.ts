@@ -20,11 +20,7 @@ export class DialogComponent {
               @Inject(MAT_DIALOG_DATA) public data: any) {
   }
 
-  closeDialog(): void {
-    this._dialogRef.close();
-  }
-
-  reserved(){
+  reserved() {
     if (this._authService.isLoggedIn()) {
       this._service.addCustomerToReservation(this.data.reservation.id).subscribe({
         next: () => {
@@ -55,12 +51,13 @@ export class DialogComponent {
 
   openPaymentFormDialog() {
     const dialogRef = this._dialog.open(PaymentFormDialogComponent, {
-      width: '400px', // Adjust the width as needed
+      width: '400px',
+      data: {reservationId: this.data.reservation.id}
     });
 
     dialogRef.afterClosed().subscribe({
       next: () => this.reserved(),
-      error: err =>  console.log("error message", err)
+      error: err => console.log("error message", err)
     })
   }
 }

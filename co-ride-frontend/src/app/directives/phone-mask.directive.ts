@@ -1,12 +1,13 @@
-import { Directive, HostListener } from '@angular/core';
-import { NgControl } from '@angular/forms';
+import {Directive, HostListener} from '@angular/core';
+import {NgControl} from '@angular/forms';
 
 @Directive({
   selector: '[appPhoneMask]'
 })
 export class PhoneMaskDirective {
 
-  constructor(public ngControl: NgControl) { }
+  constructor(public ngControl: NgControl) {
+  }
 
   @HostListener('ngModelChange', ['$event'])
   onModelChange(event: any) {
@@ -17,7 +18,7 @@ export class PhoneMaskDirective {
   keydownBackspace(event: any) {
     this.onInputChange(event.target.value, true);
   }
-  
+
 
   onInputChange(event: any, backspace: any) {
     let newVal = event.replace(/\D/g, '');

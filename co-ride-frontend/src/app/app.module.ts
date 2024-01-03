@@ -45,6 +45,7 @@ import {PaymentFormDialogComponent} from "./components/payment-form-dialog/payme
 import {MatIconModule} from "@angular/material/icon";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatFormFieldModule} from "@angular/material/form-field";
+import {NgxStarsModule} from "ngx-stars";
 
 @NgModule({
   declarations: [
@@ -81,7 +82,8 @@ import {MatFormFieldModule} from "@angular/material/form-field";
     MatDialogModule,
     NgxStripeModule.forRoot(environment.stripe.publicKey),
     MatToolbarModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    NgxStarsModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}],
   bootstrap: [AppComponent]

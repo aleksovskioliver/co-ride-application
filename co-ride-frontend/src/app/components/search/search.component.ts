@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
 import { Reservation } from 'src/app/models/Reservation';
 import { ReservationService } from 'src/app/services/reservation.service';
+import {ReservationResponse} from "../../models/ReservationResponse";
 
 @Component({
   selector: 'app-search',
@@ -12,7 +13,7 @@ import { ReservationService } from 'src/app/services/reservation.service';
 })
 export class SearchComponent implements OnInit {
 
-  reservations: Reservation[] = []
+  reservations: ReservationResponse[] = []
   loading = true
   searchField = new FormControl('');
   searchField2 = new FormControl('');

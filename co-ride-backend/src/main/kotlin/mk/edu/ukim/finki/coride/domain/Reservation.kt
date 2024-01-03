@@ -1,7 +1,5 @@
 package mk.edu.ukim.finki.coride.domain
 
-import com.fasterxml.jackson.annotation.JsonBackReference
-import com.fasterxml.jackson.annotation.JsonIgnore
 import java.time.LocalDateTime
 import javax.persistence.*
 
@@ -12,7 +10,6 @@ data class Reservation(
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name = "id")
         val id: Long,
-//        @JsonIgnore
         @ManyToOne
         @JoinColumn(name = "driver_id")
         val driver: User,

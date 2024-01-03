@@ -7,13 +7,84 @@
 </div>
 <div class="reservation-list">
   <ul class="list-group">
+    <li *ngFor="let r of reservationsR | paginate: { id:'pagination2',  itemsPerPage: 5, currentPage: p }"
+        class="list-group-item page-item border-0 p-2">
+      <div class="reservation card" (click)="setMarker(r.reservation)">
+        <div class="card-header d-flex justify-content-between"
+             [ngClass]="!isExpired(r.reservation) && r.reservation.status == 'ACTIVE' ? 'text-success' : 'text-danger'">
+          <span>Seats left: {{ r.reservation.availableSeats }}</span>
+          <span>{{ isExpired(r.reservation) || r.reservation.status == 'FINISHED' ? 'Завршена' : 'Активна' }}</span>
+        </div>
+        <div class="card-body py-2">
+          <div class="d-flex align-items-center">
+            <div class="p-3">
+              <fa-icon [icon]="'route'" size="3x"></fa-icon>
+            </div>
+            <div>
+              <div class="d-flex">
+                <h5 class="m-0 me-2 card-title">{{ r.reservation.pickupLocation.city }}</h5>
+                <fa-icon [icon]="'right-long'" size="lg"></fa-icon>
+                <h5 class="m-0 ms-2 card-title">{{ r.reservation.dropoutLocation.city }}</h5>
+              </div>
+              <p class="card-text">{{ formatTime(r.reservation.startTime) }}
+                - {{ formatTime(r.reservation.endTime) }}</p>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-between mb-2 border-top border-bottom px-2">
+            <div>
+              <fa-icon [icon]="'circle-user'"></fa-icon>
+              {{r.reservation.driver.firstName}} {{r.reservation.driver.lastName}} {{r.rating}}
+            </div>
+            <div>
+              <fa-icon [icon]="'phone'"></fa-icon>
+              {{r.reservation.driver.phoneNumber}}
+            </div>
+            <div>
+              <fa-icon [icon]="'car-side'"></fa-icon>
+              {{r.reservation.driver.vehicle?.make}} {{r.reservation.driver.vehicle?.model}}
+            </div>
+            <div>
+              <fa-icon [icon]="'coins'"></fa-icon>
+              {{ r.reservation.tripCost }} МКД
+            </div>
+          </div>
+
+          <div>
+            <form *ngIf="r.reservation.status=='ACTIVE' && !admin && !customer" (ngSubmit)="reserved(r.reservation)"
+                  method="post">
+              <div>
+                <button class="btn btn-sm btn-outline-success w-100" type="submit">Резервирај</button>
+              </div>
+            </form>
+            <form *ngIf="!admin && customer" (ngSubmit)="unreserved(r.reservation)" method="post">
+              <div>
+                <button class="btn btn-sm btn-outline-danger w-100" type="submit">Откажи резервација</button>
+              </div>
+            </form>
+          </div>
+          <div *ngIf="admin">
+            <ul>
+              <li *ngFor="let customer of r.reservation.customers">{{customer.email}}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+<pagination-controls id='pagination2' (pageChange)="p = $event"></pagination-controls>
+
+
+<div class="reservation-list">
+  <ul class="list-group">
     <li *ngFor="let r of reservations | paginate: { id:'pagination2',  itemsPerPage: 5, currentPage: p }"
         class="list-group-item page-item border-0 p-2">
       <div class="reservation card" (click)="setMarker(r)">
         <div class="card-header d-flex justify-content-between"
              [ngClass]="!isExpired(r) && r.status == 'ACTIVE' ? 'text-success' : 'text-danger'">
           <span>Seats left: {{ r.availableSeats }}</span>
-          <span>{{ isExpired(r) || r.status == 'FINISHED' ? 'FINISHED' : 'ACTIVE' }}</span>
+          <span>{{ isExpired(r) || r.status == 'FINISHED' ? 'Завршена' : 'Активна' }}</span>
         </div>
         <div class="card-body py-2">
           <div class="d-flex align-items-center">
@@ -26,34 +97,41 @@
                 <fa-icon [icon]="'right-long'" size="lg"></fa-icon>
                 <h5 class="m-0 ms-2 card-title">{{ r.dropoutLocation.city }}</h5>
               </div>
-              <p class="card-text">{{ formatTime(r.startTime) }} - {{ formatTime(r.endTime) }}</p>
+              <p class="card-text">{{ formatTime(r.startTime) }}
+                - {{ formatTime(r.endTime) }}</p>
             </div>
           </div>
 
           <div class="d-flex justify-content-between mb-2 border-top border-bottom px-2">
             <div>
-              <fa-icon [icon]="'circle-user'"></fa-icon> {{r.driver.firstName}} {{r.driver.lastName}}
+              <fa-icon [icon]="'circle-user'"></fa-icon>
+              {{r.driver.firstName}} {{r.driver.lastName}} <ngx-stars [readonly]="false" (event)="onRateChange(r.driver, $event)"></ngx-stars>
+
             </div>
             <div>
-              <fa-icon [icon]="'phone'"></fa-icon> {{r.driver.phoneNumber}}
+              <fa-icon [icon]="'phone'"></fa-icon>
+              {{r.driver.phoneNumber}}
             </div>
             <div>
-              <fa-icon [icon]="'car-side'"></fa-icon> {{r.driver.vehicle?.make}} {{r.driver.vehicle?.model}}
+              <fa-icon [icon]="'car-side'"></fa-icon>
+              {{r.driver.vehicle?.make}} {{r.driver.vehicle?.model}}
             </div>
             <div>
-              <fa-icon [icon]="'coins'"></fa-icon> {{ r.tripCost }} den
+              <fa-icon [icon]="'coins'"></fa-icon>
+              {{ r.tripCost }} МКД
             </div>
           </div>
 
           <div>
-            <form *ngIf="r.status=='ACTIVE' && !admin && !customer" (ngSubmit)="reserved(r)" method="post">
+            <form *ngIf="r.status=='ACTIVE' && !admin && !customer" (ngSubmit)="reserved(r)"
+                  method="post">
               <div>
-                <button class="btn btn-sm btn-outline-success w-100" type="submit">RESERVE</button>
+                <button class="btn btn-sm btn-outline-success w-100" type="submit">Резервирај</button>
               </div>
             </form>
             <form *ngIf="!admin && customer" (ngSubmit)="unreserved(r)" method="post">
               <div>
-                <button class="btn btn-sm btn-outline-danger w-100" type="submit">CANCEL RESERVATION</button>
+                <button class="btn btn-sm btn-outline-danger w-100" type="submit">Откажи резервација</button>
               </div>
             </form>
           </div>
@@ -67,4 +145,5 @@
     </li>
   </ul>
 </div>
-<pagination-controls id='pagination2' (pageChange)="p = $event"></pagination-controls>
+<pagination-controls id='pagination3' (pageChange)="p = $event"></pagination-controls>
+

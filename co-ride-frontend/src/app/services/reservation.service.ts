@@ -5,6 +5,7 @@ import { catchError, Observable, tap, throwError } from 'rxjs';
 import { MyLocation } from '../models/MyLocation';
 import { ReservationDTO } from '../models/ReservationDTO';
 import { ReservationUpdateDTO } from '../models/ReservationUpdateDTO';
+import {ReservationResponse} from "../models/ReservationResponse";
 
 
 @Injectable({
@@ -16,15 +17,15 @@ export class ReservationService {
 
   constructor(private http: HttpClient) { }
 
-  getReservations(pickupCity: string, dropoutCity: string): Observable<Reservation[]> {
+  getReservations(pickupCity: string, dropoutCity: string): Observable<ReservationResponse[]> {
     if ((pickupCity == '') && (dropoutCity != '')) {
-      return this.http.get<Reservation[]>(`${this.url}/reservation?dropoutCity=${dropoutCity}`)
+      return this.http.get<ReservationResponse[]>(`${this.url}/reservation?dropoutCity=${dropoutCity}`)
     } else if ((pickupCity != '') && (dropoutCity == '')) {
-      return this.http.get<Reservation[]>(`${this.url}/reservation?pickupCity=${pickupCity}`);
+      return this.http.get<ReservationResponse[]>(`${this.url}/reservation?pickupCity=${pickupCity}`);
     } else if ((pickupCity == '') && (dropoutCity == '')) {
-      return this.http.get<Reservation[]>(`${this.url}/reservation`).pipe(tap(data => console.log(data)));
+      return this.http.get<ReservationResponse[]>(`${this.url}/reservation`).pipe(tap(data => console.log(data)));
     } else {
-      return this.http.get<Reservation[]>(`${this.url}/reservation?pickupCity=${pickupCity}&dropoutCity=${dropoutCity}`);
+      return this.http.get<ReservationResponse[]>(`${this.url}/reservation?pickupCity=${pickupCity}&dropoutCity=${dropoutCity}`);
     }
   }
 
