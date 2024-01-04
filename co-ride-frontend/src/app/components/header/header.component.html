@@ -2,8 +2,8 @@
   <span class="navbar-brand"><a routerLink="/">CoRide</a></span>
   <span class="spacer"></span>
   <div *ngIf="!isLoggedIn" class="button-group">
-    <button mat-raised-button class="register-button" color="accent">Register</button>
-    <button mat-raised-button class="login-button" color="primary" routerLink="/login">Login</button>
+    <button mat-raised-button class="register-button" color="accent">Регистрирај се</button>
+    <button mat-raised-button class="login-button" color="primary" routerLink="/login">Најави се</button>
   </div>
   <div *ngIf="isLoggedIn && loggedInUser" class="navbar-nav">
     <div class="d-flex align-items-center">

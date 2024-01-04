@@ -1,11 +1,11 @@
 <ul class="list-group">
   <li *ngFor="let r of reservations | paginate: { id:'pagination1', itemsPerPage: 3, currentPage: p }"
-    class="list-group-item page-item border-0">
+      class="list-group-item page-item border-0">
     <div class="reservation card">
       <div class="card-header d-flex justify-content-between"
-        [ngClass]="!isExpired(r) && r.status == 'ACTIVE' ? 'text-success' : 'text-danger'">
-        <span>Seats left: {{ r.availableSeats }}</span>
-        <span>{{ isExpired(r) || r.status == 'FINISHED' ? 'FINISHED' : 'ACTIVE' }}</span>
+           [ngClass]="!isExpired(r) && r.status == 'ACTIVE' ? 'text-success' : 'text-danger'">
+        <span>Број на преостанати седишта: {{ r.availableSeats }}</span>
+        <span>{{ isExpired(r) || r.status == 'FINISHED' ? 'Завршена' : 'Активна' }}</span>
       </div>
       <div class="card-body py-2">
         <div class="d-flex align-items-center">
@@ -24,32 +24,37 @@
 
         <div class="d-flex justify-content-between mb-2 border-top border-bottom px-2">
           <div>
-            <fa-icon [icon]="'circle-user'"></fa-icon> {{r.driver.firstName}} {{r.driver.lastName}}
+            <fa-icon [icon]="'circle-user'"></fa-icon>
+            {{r.driver.firstName}} {{r.driver.lastName}}
           </div>
           <div>
-            <fa-icon [icon]="'phone'"></fa-icon> {{r.driver.phoneNumber}}
+            <fa-icon [icon]="'phone'"></fa-icon>
+            {{r.driver.phoneNumber}}
           </div>
           <div>
-            <fa-icon [icon]="'car-side'"></fa-icon> {{r.driver.vehicle?.make}} {{r.driver.vehicle?.model}}
+            <fa-icon [icon]="'car-side'"></fa-icon>
+            {{r.driver.vehicle?.make}} {{r.driver.vehicle?.model}}
           </div>
           <div>
-            <fa-icon [icon]="'coins'"></fa-icon> {{ r.tripCost }} den
+            <fa-icon [icon]="'coins'"></fa-icon>
+            {{ r.tripCost }} МКД
           </div>
         </div>
         <div>
           <ul>
-            <li *ngFor="let customer of r.customers">Reserved by: {{customer.firstName}} {{customer.lastName}}
+            <li *ngFor="let customer of r.customers">Резервирано од: {{customer.firstName}} {{customer.lastName}}
               {{customer.phoneNumber}}</li>
           </ul>
         </div>
 
         <div class="row mt-2">
           <div class="col">
-            <button (click)="updateReservation(r.id)" class="btn btn-sm btn-success w-25 btn-custom">Edit</button>
+            <button (click)="updateReservation(r.id)" class="btn btn-sm btn-success w-25 btn-custom">Уреди</button>
           </div>
           <form class="col d-flex justify-content-end" method="delete">
-            <button class="btn btn-sm btn-outline-danger" type="submit" (click)="deleteReservation(r.id)">DELETE
-              RESERVATION</button>
+            <button class="btn btn-sm btn-outline-danger" type="submit" (click)="deleteReservation(r.id)">ОТКАЖИ
+              РЕЗЕРВАЦИЈА
+            </button>
           </form>
         </div>
 

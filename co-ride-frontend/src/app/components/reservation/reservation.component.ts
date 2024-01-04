@@ -6,9 +6,11 @@ import {AuthService} from 'src/app/services/auth.service';
 import {Router} from '@angular/router';
 import * as moment from 'moment';
 import {MatDialog} from "@angular/material/dialog";
-import {DialogComponent} from "../dialog/dialog.component";
+import {PaymentMethodDialogComponent} from "../payment-method-dialog/payment-method-dialog.component";
 import {ReservationResponse} from "../../models/ReservationResponse";
 import {User} from "../../models/User";
+import {RatingService} from "../../services/rating.service";
+
 
 @Component({
   selector: 'app-reservation',
@@ -25,12 +27,12 @@ export class ReservationComponent implements OnInit {
   errorMessage = '';
   success = false;
 
-
   constructor(
     private router: Router,
     private authService: AuthService,
     private service: ReservationService,
     private mapService: MapService,
+    private ratingService: RatingService,
     private dialog: MatDialog) {
   }
 
@@ -41,14 +43,10 @@ export class ReservationComponent implements OnInit {
     this.errorMessage = '';
     this.success = false;
 
-    const dialogRef = this.dialog.open(DialogComponent, {
+    const dialogRef = this.dialog.open(PaymentMethodDialogComponent, {
       width: '400px',
       data: {reservation: r}
     });
-
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log('dialog close', result)
-    // });
   }
 
   unreserved(r: Reservation) {
@@ -85,9 +83,6 @@ export class ReservationComponent implements OnInit {
   }
 
   onRateChange(driver: User, event: any): void {
-    // Update the rating in your backend or perform other actions
-    const newRating = event.rating;
-
-    console.log(`New rating for ${driver.firstName} ${driver.lastName}: ${newRating}`);
+    this.ratingService.rateUser(driver.id, event).subscribe();
   }
 }

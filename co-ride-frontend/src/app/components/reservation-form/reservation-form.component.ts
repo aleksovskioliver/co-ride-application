@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MyLocation } from 'src/app/models/MyLocation';
-import { ReservationDTO } from 'src/app/models/ReservationDTO';
-import { MapService } from 'src/app/services/map.service';
-import { ReservationService } from 'src/app/services/reservation.service';
+import {Component, OnInit} from '@angular/core';
+import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {MyLocation} from 'src/app/models/MyLocation';
+import {ReservationDTO} from 'src/app/models/ReservationDTO';
+import {MapService} from 'src/app/services/map.service';
+import {ReservationService} from 'src/app/services/reservation.service';
 
 @Component({
   selector: 'app-reservation-form',
@@ -26,7 +26,8 @@ export class ReservationFormComponent implements OnInit {
   constructor(
     private mapService: MapService,
     private formBuilder: FormBuilder,
-    private reservationService: ReservationService) { }
+    private reservationService: ReservationService) {
+  }
 
   ngOnInit(): void {
     this.reservationService.getLocations().subscribe({

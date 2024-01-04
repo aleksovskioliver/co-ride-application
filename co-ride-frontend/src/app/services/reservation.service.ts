@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
-import { Reservation } from '../models/Reservation';
-import { catchError, Observable, tap, throwError } from 'rxjs';
-import { MyLocation } from '../models/MyLocation';
-import { ReservationDTO } from '../models/ReservationDTO';
-import { ReservationUpdateDTO } from '../models/ReservationUpdateDTO';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http'
+import {Reservation} from '../models/Reservation';
+import {catchError, Observable, tap, throwError} from 'rxjs';
+import {MyLocation} from '../models/MyLocation';
+import {ReservationDTO} from '../models/ReservationDTO';
+import {ReservationUpdateDTO} from '../models/ReservationUpdateDTO';
 import {ReservationResponse} from "../models/ReservationResponse";
 
 
@@ -14,8 +14,8 @@ import {ReservationResponse} from "../models/ReservationResponse";
 export class ReservationService {
 
   url = "http://localhost:8084/api"
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   getReservations(pickupCity: string, dropoutCity: string): Observable<ReservationResponse[]> {
     if ((pickupCity == '') && (dropoutCity != '')) {
@@ -53,7 +53,7 @@ export class ReservationService {
     )
   }
 
-  getReservationById(id: number): Observable<Reservation>{
+  getReservationById(id: number): Observable<Reservation> {
     return this.http.get<Reservation>(`${this.url}/reservation/find/${id}`);
   }
 
@@ -69,7 +69,7 @@ export class ReservationService {
     )
   }
 
-  updateReservation(id: number, reservation: ReservationUpdateDTO){
+  updateReservation(id: number, reservation: ReservationUpdateDTO) {
     return this.http.put(`http://localhost:8084/api/reservation/update/${id}`, reservation);
   }
 }

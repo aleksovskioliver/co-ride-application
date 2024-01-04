@@ -1,10 +1,10 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { catchError, tap, throwError } from 'rxjs';
-import { AuthenticationRequest } from '../models/AuthenticationRequest';
+import {HttpClient} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {catchError, tap, throwError} from 'rxjs';
+import {AuthenticationRequest} from '../models/AuthenticationRequest';
 import * as moment from 'moment';
-import { AuthenticationResponse } from '../models/AuthenticationResponse';
-import { UserDTO } from '../models/UserDTO';
+import {AuthenticationResponse} from '../models/AuthenticationResponse';
+import {UserDTO} from '../models/UserDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,8 @@ export class AuthService {
 
   url = 'http://localhost:8084'
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   registerUser(user: UserDTO) {
     return this.http.post(`${this.url}/api/user/create`, user)

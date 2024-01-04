@@ -1,9 +1,9 @@
 footer {
   background: linear-gradient(to right, var(--gradient-color-1), var(--gradient-color-2));
   color: var(--light-color);
-  padding: 10px; /* Add padding for spacing */
-  border-top: 2px solid var(--main-dark-color); /* Add a subtle border at the top */
-  margin-top: auto; /* Push the footer to the bottom */
+  padding: 10px;
+  border-top: 2px solid var(--main-dark-color);
+  margin-top: auto;
 }
 
 .link {

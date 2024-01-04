@@ -14,7 +14,7 @@ data class Rating(
         val driver: User,
 
         @Column(name = "score")
-        val score: Long,
+        val score: Double,
 
         @ManyToOne
         @JoinColumn(name = "rider_id")

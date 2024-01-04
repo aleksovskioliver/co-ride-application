@@ -2,8 +2,8 @@
   {{ errorMessage }}
 </div>
 <div *ngIf="success" class="alert alert-success" role="alert">
-  <div>You have successfully reserved your seat.</div>
-  <div>Have a nice trip!</div>
+  <div>Успешно го резервиравте вашето место.</div>
+  <div>Имајте мирен и пријатен пат!</div>
 </div>
 <div class="reservation-list">
   <ul class="list-group">
@@ -12,7 +12,7 @@
       <div class="reservation card" (click)="setMarker(r.reservation)">
         <div class="card-header d-flex justify-content-between"
              [ngClass]="!isExpired(r.reservation) && r.reservation.status == 'ACTIVE' ? 'text-success' : 'text-danger'">
-          <span>Seats left: {{ r.reservation.availableSeats }}</span>
+          <span>Број на преостанати седишта: {{ r.reservation.availableSeats }}</span>
           <span>{{ isExpired(r.reservation) || r.reservation.status == 'FINISHED' ? 'Завршена' : 'Активна' }}</span>
         </div>
         <div class="card-body py-2">
@@ -34,7 +34,9 @@
           <div class="d-flex justify-content-between mb-2 border-top border-bottom px-2">
             <div>
               <fa-icon [icon]="'circle-user'"></fa-icon>
-              {{r.reservation.driver.firstName}} {{r.reservation.driver.lastName}} {{r.rating}}
+              {{r.reservation.driver.firstName}} {{r.reservation.driver.lastName}} <span
+              class="star">&#9734;</span>{{r.rating}}
+
             </div>
             <div>
               <fa-icon [icon]="'phone'"></fa-icon>
@@ -73,17 +75,17 @@
     </li>
   </ul>
 </div>
-<pagination-controls id='pagination2' (pageChange)="p = $event"></pagination-controls>
+<pagination-controls *ngIf="reservationsR.length > 0" id='pagination2' (pageChange)="p = $event"></pagination-controls>
 
 
 <div class="reservation-list">
   <ul class="list-group">
-    <li *ngFor="let r of reservations | paginate: { id:'pagination2',  itemsPerPage: 5, currentPage: p }"
+    <li *ngFor="let r of reservations | paginate: { id:'pagination3',  itemsPerPage: 5, currentPage: p }"
         class="list-group-item page-item border-0 p-2">
       <div class="reservation card" (click)="setMarker(r)">
         <div class="card-header d-flex justify-content-between"
              [ngClass]="!isExpired(r) && r.status == 'ACTIVE' ? 'text-success' : 'text-danger'">
-          <span>Seats left: {{ r.availableSeats }}</span>
+          <span>Број на преостанати седишта: {{ r.availableSeats }}</span>
           <span>{{ isExpired(r) || r.status == 'FINISHED' ? 'Завршена' : 'Активна' }}</span>
         </div>
         <div class="card-body py-2">
@@ -105,8 +107,8 @@
           <div class="d-flex justify-content-between mb-2 border-top border-bottom px-2">
             <div>
               <fa-icon [icon]="'circle-user'"></fa-icon>
-              {{r.driver.firstName}} {{r.driver.lastName}} <ngx-stars [readonly]="false" (event)="onRateChange(r.driver, $event)"></ngx-stars>
-
+              {{r.driver.firstName}} {{r.driver.lastName}}
+              <ngx-stars [readonly]="false" (ratingOutput)="onRateChange(r.driver, $event)"></ngx-stars>
             </div>
             <div>
               <fa-icon [icon]="'phone'"></fa-icon>
@@ -145,5 +147,5 @@
     </li>
   </ul>
 </div>
-<pagination-controls id='pagination3' (pageChange)="p = $event"></pagination-controls>
+<pagination-controls *ngIf="reservations.length > 0" id='pagination3' (pageChange)="p = $event"></pagination-controls>
 

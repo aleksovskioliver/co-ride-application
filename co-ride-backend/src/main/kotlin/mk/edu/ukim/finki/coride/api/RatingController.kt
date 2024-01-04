@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("ratings")
+@RequestMapping("/api/ratings")
 class RatingController(
         private val service: RatingService
 ) {
-    @PostMapping("create")
+    @PostMapping
     fun addRatingToDriver(@RequestBody request: RatingRequest) = service.save(request)
 }

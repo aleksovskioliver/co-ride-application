@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators, AbstractControl } from '@angular/forms';
-import { Router } from '@angular/router';
-import { UserDTO } from 'src/app/models/UserDTO';
-import { CustomValidators } from 'src/app/providers/custom-validators';
-import { AuthService } from 'src/app/services/auth.service';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, Validators, AbstractControl} from '@angular/forms';
+import {Router} from '@angular/router';
+import {UserDTO} from 'src/app/models/UserDTO';
+import {CustomValidators} from 'src/app/providers/custom-validators';
+import {AuthService} from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -40,7 +40,8 @@ export class RegisterComponent implements OnInit {
     private formBuilder: FormBuilder,
     private auth: AuthService,
     private router: Router
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.form.get('role')!.valueChanges
@@ -83,7 +84,6 @@ export class RegisterComponent implements OnInit {
         seats: data.seats
       } : null
     }
-    console.log(user)
 
     this.auth.registerUser(user).subscribe({
       next: () => {
@@ -91,7 +91,6 @@ export class RegisterComponent implements OnInit {
       },
       error: error => {
         this.errorMessage = error.error
-        console.log("Error", error)
       }
     })
   }

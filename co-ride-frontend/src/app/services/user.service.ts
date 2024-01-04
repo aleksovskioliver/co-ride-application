@@ -1,10 +1,10 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { GetUserResponse } from '../models/GetUserResponse';
-import { Reservation } from '../models/Reservation';
-import { User } from '../models/User';
-import { UserDTO } from '../models/UserDTO';
+import {HttpClient} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {GetUserResponse} from '../models/GetUserResponse';
+import {Reservation} from '../models/Reservation';
+import {User} from '../models/User';
+import {UserDTO} from '../models/UserDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,8 @@ export class UserService {
 
   url = 'http://localhost:8084/api/user'
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   getUser(): Observable<GetUserResponse> {
     return this.http.get<GetUserResponse>(`${this.url}/get`)
@@ -23,16 +24,12 @@ export class UserService {
     return this.http.get<Reservation[]>(`${this.url}/reservations`)
   }
 
-  getUserById(id: number): Observable<User>{
+  getUserById(id: number): Observable<User> {
     return this.http.get<User>(`${this.url}/${id}`)
   }
 
-  updateUser(id: number, user: UserDTO): Observable<UserDTO>{
+  updateUser(id: number, user: UserDTO): Observable<UserDTO> {
     return this.http.put<UserDTO>(`http://localhost:8084/api/user/update/${id}`, user);
-  }
-
-  rateDriver(driverId: number, rating: number): Observable<void> {
-    return this.http.put<void>(`${this.url}/user/rateDriver/${driverId}?rating=${rating}`, null);
   }
 
 }

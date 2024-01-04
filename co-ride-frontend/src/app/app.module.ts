@@ -35,13 +35,14 @@ import {
   faRightLong,
   faCar
 } from '@fortawesome/free-solid-svg-icons';
-import {DialogComponent} from './components/dialog/dialog.component';
+import {PaymentMethodDialogComponent} from './components/payment-method-dialog/payment-method-dialog.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatDialogModule} from "@angular/material/dialog";
-// import {PaymentComponent} from "./components/payment/payment.component";
 import {NgxStripeModule} from "ngx-stripe";
 import {environment} from 'src/environments/environment';
-import {PaymentFormDialogComponent} from "./components/payment-form-dialog/payment-form-dialog.component";
+import {
+  OnlinePaymentFormDialogComponent
+} from "./components/online-payment-form-dialog/online-payment-form-dialog.component";
 import {MatIconModule} from "@angular/material/icon";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatFormFieldModule} from "@angular/material/form-field";
@@ -65,8 +66,8 @@ import {NgxStarsModule} from "ngx-stars";
     UpdateComponent,
     VehicleUpdateComponent,
     UpdateFormComponent,
-    DialogComponent,
-    PaymentFormDialogComponent
+    PaymentMethodDialogComponent,
+    OnlinePaymentFormDialogComponent
   ],
   imports: [
     BrowserModule,

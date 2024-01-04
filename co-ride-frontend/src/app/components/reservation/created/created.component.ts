@@ -1,8 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component, Input, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 import * as moment from 'moment';
-import { Reservation } from 'src/app/models/Reservation';
-import { ReservationService } from 'src/app/services/reservation.service';
+import {Reservation} from 'src/app/models/Reservation';
+import {ReservationService} from 'src/app/services/reservation.service';
 
 @Component({
   selector: 'app-created',
@@ -17,7 +17,8 @@ export class CreatedComponent implements OnInit {
   p: number = 1;
 
   constructor(private service: ReservationService,
-    private router: Router) { }
+              private router: Router) {
+  }
 
   ngOnInit(): void {
   }
@@ -28,7 +29,9 @@ export class CreatedComponent implements OnInit {
   }
 
   deleteReservation(id: number) {
-    this.service.deleteReservation(id).subscribe(() => { window.location.reload() })
+    this.service.deleteReservation(id).subscribe(() => {
+      window.location.reload()
+    })
   }
 
   updateReservation(id: number) {

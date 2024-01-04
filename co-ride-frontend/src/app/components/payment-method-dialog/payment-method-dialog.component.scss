@@ -1,0 +1,26 @@
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+.dialog-title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.dialog-content {
+  padding: 10px 0;
+  text-align: center;
+}
+
+.body-text {
+  font-size: 1rem;
+  color: #666;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.cash-button, .online-button {
+  border-radius: 8px;
+  margin: 0 8px;
+}

@@ -1,57 +1,58 @@
 <div class="container mt-5">
-    <div class="card row reservation-form rounded">
-        <h2 class="mb-3 text-center border-bottom">Create reservation</h2>
-        <form [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
-            <div class="mb-4">
-                <select class="form-select" (change)="changePickupCity()" formControlName="pickupCity">
-                    <option value="">Choose pickup location</option>
-                    <option *ngFor="let city of cities" [ngValue]="city">
-                        {{ city.city }}
-                    </option>
-                </select>
-                <!-- error block -->
-                <div class="invalid-feedback" *ngIf="isSubmitted && f['pickupCity'].errors">
-                    <sup>*</sup>Please provide city name
-                </div>
-            </div>
+  <div class="card row reservation-form rounded">
+    <h2 class="mb-3 text-center border-bottom">Постави резервација</h2>
+    <form [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
+      <div class="mb-4">
+        <select class="form-select" (change)="changePickupCity()" formControlName="pickupCity">
+          <option value="">Избери дестинација на тргнување</option>
+          <option *ngFor="let city of cities" [ngValue]="city">
+            {{ city.city }}
+          </option>
+        </select>
+        <!-- error block -->
+        <div class="invalid-feedback" *ngIf="isSubmitted && f['pickupCity'].errors">
+          <sup>*</sup>Ве молиме, изберете ја дестинацијата на тргнување
+        </div>
+      </div>
 
-            <div class="mb-4">
-                <select class="form-select" (change)="changeDropoffCity()" formControlName="dropoffCity">
-                    <option value="">Choose dropoff locaiton</option>
-                    <option *ngFor="let city of cities" [ngValue]="city">
-                        {{ city.city }}
-                    </option>
-                </select>
-                <!-- error block -->
-                <div class="invalid-feedback" *ngIf="isSubmitted && f['dropoffCity'].errors">
-                    <sup>*</sup>Please provide city name
-                </div>
-            </div>
+      <div class="mb-4">
+        <select class="form-select" (change)="changeDropoffCity()" formControlName="dropoffCity">
+          <option value="">Избери дестинација на пристигнување</option>
+          <option *ngFor="let city of cities" [ngValue]="city">
+            {{ city.city }}
+          </option>
+        </select>
+        <!-- error block -->
+        <div class="invalid-feedback" *ngIf="isSubmitted && f['dropoffCity'].errors">
+          <sup>*</sup>Ве молиме, изберете ја дестинацијата на престигнување
+        </div>
+      </div>
 
-            <div class="mb-4">
-                <input class="form-control" type="number" formControlName="availableSeats" placeholder="Enter available seats">
-            </div>
+      <div class="mb-4">
+        <input class="form-control" type="number" formControlName="availableSeats"
+               placeholder="Внеси го бројот на слободни седишта">
+      </div>
 
-            <div class="input-group mb-4">
-                <span class="input-group-text">Start time</span>
-                <input class="form-control" type="datetime-local" formControlName="startTime">
-            </div>
+      <div class="input-group mb-4">
+        <span class="input-group-text">Време на тргнување</span>
+        <input class="form-control" type="datetime-local" formControlName="startTime">
+      </div>
 
-            <div class="input-group mb-4">
-                <span class="input-group-text">End time</span>
-                <input class="form-control" type="datetime-local" formControlName="endTime">
-            </div>
+      <div class="input-group mb-4">
+        <span class="input-group-text">Очекувано време на пристигнување</span>
+        <input class="form-control" type="datetime-local" formControlName="endTime">
+      </div>
 
-            <div class="input-group mb-4">
-                <span class="input-group-text">den</span>
-                <input class="form-control" type="number" formControlName="price" placeholder="Enter price">
-            </div>
+      <div class="input-group mb-4">
+        <span class="input-group-text">МКД</span>
+        <input class="form-control" type="number" formControlName="price" placeholder="Внеси цена">
+      </div>
 
-            <div class="form-group">
-                <button type="submit" class="btn btn-dark btn-lg form-control btn-custom">
-                    Create
-                </button>
-            </div>
-        </form>
-    </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-dark btn-lg form-control btn-custom">
+          Постави!
+        </button>
+      </div>
+    </form>
+  </div>
 </div>

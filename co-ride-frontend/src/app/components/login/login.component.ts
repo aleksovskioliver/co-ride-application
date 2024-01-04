@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
+import {Component, OnInit} from '@angular/core';
+import {AbstractControl, FormBuilder, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+import {AuthService} from 'src/app/services/auth.service';
 import {AuthenticationRequest} from "../../models/AuthenticationRequest";
 
 @Component({
@@ -21,7 +21,8 @@ export class LoginComponent {
   constructor(
     private formBuilder: FormBuilder,
     private auth: AuthService,
-    private router: Router) { }
+    private router: Router) {
+  }
 
   get f(): { [key: string]: AbstractControl } {
     return this.form.controls;
@@ -34,7 +35,9 @@ export class LoginComponent {
     if (this.form.valid) {
       this.auth.loginUser(this.form.value as AuthenticationRequest).subscribe({
         next: () => {
-          this.router.navigateByUrl("/").then(() => {window.location.reload()})
+          this.router.navigateByUrl("/").then(() => {
+            window.location.reload()
+          })
         },
         error: error => {
           this.errorMessage = error

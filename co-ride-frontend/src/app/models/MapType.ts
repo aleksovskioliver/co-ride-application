@@ -1,4 +1,4 @@
-export interface NewType {
+export interface MapType {
     position: {
       lat: number
       lng: number

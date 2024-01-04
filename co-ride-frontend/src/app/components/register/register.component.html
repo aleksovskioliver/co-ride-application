@@ -2,7 +2,7 @@
   <div [ngClass]="{'driver': f['role'].value == 'driver', 'rider': f['role'].value == 'rider'}"
        class="register-form rounded">
     <form class="row" [formGroup]="form" (ngSubmit)="onSubmit()">
-      <h1 class="text-center border-bottom mb-4 pb-2">Sign Up</h1>
+      <h1 class="text-center border-bottom mb-4 pb-2">Најави се</h1>
       <div class="user-info col">
 
         <div class="row">
@@ -10,11 +10,11 @@
             <div class="input-group">
               <span class="input-group-text"><i class="fas fa-user"></i></span>
               <input type="text" formControlName="firstname" class="form-control"
-                     placeholder="First Name"
+                     placeholder="Име"
                      [ngClass]="{ 'is-invalid': submitted && f['firstname'].errors }"/>
             </div>
             <div *ngIf="submitted && f['firstname'].errors" class="invalid-feedback">
-              <div *ngIf="f['firstname'].errors['required']">First name is required</div>
+              <div *ngIf="f['firstname'].errors['required']">Име е задолжително</div>
             </div>
           </div>
 
@@ -22,11 +22,11 @@
             <div class="input-group">
               <span class="input-group-text"><i class="fas fa-user"></i></span>
               <input type="text" formControlName="lastname" class="form-control"
-                     placeholder="Last Name"
+                     placeholder="Презиме"
                      [ngClass]="{ 'is-invalid': submitted && f['lastname'].errors }"/>
             </div>
             <div *ngIf="submitted && f['lastname'].errors" class="invalid-feedback">
-              <div *ngIf="f['lastname'].errors['required']">Last name is required</div>
+              <div *ngIf="f['lastname'].errors['required']">Презиме е задолжително</div>
             </div>
           </div>
         </div>
@@ -35,11 +35,11 @@
           <div class="input-group">
             <span class="input-group-text"><i class="fas fa-phone"></i></span>
             <input type="text" formControlName="phonenumber" class="form-control" appPhoneMask
-                   placeholder="Phone number"
+                   placeholder="Телефонски број"
                    [ngClass]="{ 'is-invalid': submitted && f['phonenumber'].errors }"/>
           </div>
           <div *ngIf="submitted && f['phonenumber'].errors" class="invalid-feedback">
-            <div *ngIf="f['phonenumber'].errors['required']">Phone number is required</div>
+            <div *ngIf="f['phonenumber'].errors['required']">Телефонски број е задолжително</div>
           </div>
         </div>
 
@@ -47,12 +47,12 @@
           <div class="input-group">
             <span class="input-group-text"><i class="fas fa-envelope"></i></span>
             <input type="text" formControlName="email" class="form-control"
-                   placeholder="Email"
+                   placeholder="Електронска адреса"
                    [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"/>
           </div>
           <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
-            <div *ngIf="f['email'].errors['required']">Email is required</div>
-            <div *ngIf="f['email'].errors['email']">Email is invalid</div>
+            <div *ngIf="f['email'].errors['required']">Електронска адреса е задолжително</div>
+            <div *ngIf="f['email'].errors['email']">Невалидна електронска адреса</div>
           </div>
         </div>
 
@@ -60,16 +60,16 @@
           <div class="input-group">
             <span class="input-group-text"><i class="fas fa-lock"></i></span>
             <input type="password" formControlName="password" class="form-control"
-                   placeholder="Password"
+                   placeholder="Лозинка"
                    [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"/>
           </div>
           <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
-            <div *ngIf="f['password'].errors['required']">Password is required</div>
+            <div *ngIf="f['password'].errors['required']">Лозика е задолжително</div>
             <div *ngIf="f['password'].errors['minlength']">
-              Password must be at least 6 characters
+              Лозинката мора да содржи најмалку 6 карактери
             </div>
             <div *ngIf="f['password'].errors['maxlength']">
-              Password must not exceed 40 characters
+              Лозинката не смее да содржи повеќе од 40 карактери
             </div>
           </div>
         </div>
@@ -78,15 +78,15 @@
           <div class="input-group">
             <span class="input-group-text"><i class="fas fa-lock"></i></span>
             <input type="password" formControlName="confirmPassword" class="form-control"
-                   placeholder="Confirm Password"
+                   placeholder="Потврди лозинка"
                    [ngClass]="{ 'is-invalid': submitted && f['confirmPassword'].errors }"/>
           </div>
           <div *ngIf="submitted && f['confirmPassword'].errors" class="invalid-feedback">
             <div *ngIf="f['confirmPassword'].errors['required']">
-              Confirm Password is required
+              Потврди лозинка е задолжително
             </div>
             <div *ngIf="f['confirmPassword'].errors['mustMatch']">
-              Confirm Password does not match
+              Дветте лозинки не се совпаѓаат
             </div>
           </div>
         </div>
@@ -96,7 +96,7 @@
             <input class="btn-primary-color btn-check" id="rider" type="radio" value="rider" name="role"
                    formControlName="role">
             <label class="btn btn-outline-dark" for="rider">
-              <i class="fas fa-user"></i> Rider
+              <i class="fas fa-user"></i> Патник
             </label>
           </div>
 
@@ -104,7 +104,7 @@
             <input class="btn-check" id="driver" type="radio" value="driver" name="role"
                    formControlName="role">
             <label class="btn btn-outline-dark" for="driver">
-              <i class="fas fa-car"></i> Driver
+              <i class="fas fa-car"></i> Возач
             </label>
           </div>
         </div>
@@ -112,13 +112,13 @@
 
       <div class="col" *ngIf="f['role'].value == 'driver'">
         <div class="mt-4">
-          <h4 class="text-center">Enter vehicle</h4>
+          <h4 class="text-center">Внеси возило</h4>
 
           <div class="form-group">
             <div class="input-group">
               <span class="input-group-text"><i class="fas fa-car"></i></span>
               <input type="text" formControlName="make" class="form-control"
-                     placeholder="Make"
+                     placeholder="Производител"
                      [ngClass]="{ 'is-invalid': submitted && f['make'].errors }"/>
             </div>
           </div>
@@ -127,7 +127,7 @@
             <div class="input-group">
               <span class="input-group-text"><i class="fas fa-car"></i></span>
               <input type="text" formControlName="model" class="form-control"
-                     placeholder="Model"
+                     placeholder="Модел"
                      [ngClass]="{ 'is-invalid': submitted && f['model'].errors }"/>
             </div>
           </div>
@@ -136,7 +136,7 @@
             <div class="input-group">
               <span class="input-group-text"><i class="fas fa-chair"></i></span>
               <input type="text" formControlName="seats" class="form-control"
-                     placeholder="Seats"
+                     placeholder="Број на седишта"
                      [ngClass]="{ 'is-invalid': submitted && f['seats'].errors }"/>
             </div>
           </div>
@@ -151,7 +151,7 @@
       </div>
 
       <div class="form-group">
-        <button type="submit" class="btn btn-custom form-control">Register</button>
+        <button type="submit" class="btn btn-custom form-control">Регистрирај се!</button>
       </div>
 
     </form>

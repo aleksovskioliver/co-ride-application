@@ -2,17 +2,16 @@ import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {AuthService} from "../../services/auth.service";
 import {ReservationService} from "../../services/reservation.service";
-import {ReservationComponent} from "../reservation/reservation.component";
 import {Router} from "@angular/router";
-import {PaymentFormDialogComponent} from "../payment-form-dialog/payment-form-dialog.component";
+import {OnlinePaymentFormDialogComponent} from "../online-payment-form-dialog/online-payment-form-dialog.component";
 
 @Component({
   selector: 'app-dialog',
-  templateUrl: 'dialog.component.html',
-  styleUrls: ['dialog.component.scss']
+  templateUrl: 'payment-method-dialog.component.html',
+  styleUrls: ['payment-method-dialog.component.scss']
 })
-export class DialogComponent {
-  constructor(public _dialogRef: MatDialogRef<DialogComponent>,
+export class PaymentMethodDialogComponent {
+  constructor(public _dialogRef: MatDialogRef<PaymentMethodDialogComponent>,
               private _authService: AuthService,
               private _service: ReservationService,
               private _router: Router,
@@ -45,12 +44,11 @@ export class DialogComponent {
   }
 
   payOnline() {
-    // Open the payment form dialog directly
     this.openPaymentFormDialog();
   }
 
   openPaymentFormDialog() {
-    const dialogRef = this._dialog.open(PaymentFormDialogComponent, {
+    const dialogRef = this._dialog.open(OnlinePaymentFormDialogComponent, {
       width: '400px',
       data: {reservationId: this.data.reservation.id}
     });

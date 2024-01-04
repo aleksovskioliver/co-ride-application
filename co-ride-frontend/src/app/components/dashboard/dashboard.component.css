@@ -4,9 +4,7 @@
 }
 
 .map-container {
-  flex: 0 0 35%;  /* 30% width, don't grow or shrink */
-  /*min-height: 500px;*/
-  /*max-height: 80vh;*/
+  flex: 0 0 35%;
   background-color: var(--main-bg-color);
   border: 1px solid var(--main-dark-color);
   border-radius: 10px;
@@ -16,7 +14,7 @@
 }
 
 .search-container {
-  flex: 0 0 60%;  /* 30% width, don't grow or shrink */
+  flex: 0 0 60%;
   background-color: var(--main-bg-color);
   border: 1px solid var(--main-dark-color);
   border-radius: 10px;

@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { UserDTO } from '../../../models/UserDTO';
-import { UserService } from '../../../services/user.service';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {UserDTO} from '../../../models/UserDTO';
+import {UserService} from '../../../services/user.service';
 
 @Component({
   selector: 'app-update',
@@ -17,24 +17,25 @@ export class UpdateComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private userService: UserService
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
     this.userService.getUserById(this.id!)
-    .subscribe({
-      next: (data)=> this.user = data
-    })
+      .subscribe({
+        next: (data) => this.user = data
+      })
   }
 
-  updateUser(){
-    this.userService.updateUser(this.id!,this.user!)
-    .subscribe(() => {
-      this.router.navigate(['/profile']);
-    })
+  updateUser() {
+    this.userService.updateUser(this.id!, this.user!)
+      .subscribe(() => {
+        this.router.navigate(['/profile']);
+      })
   }
 
-  onSubmit(){
+  onSubmit() {
     this.updateUser()
   }
 

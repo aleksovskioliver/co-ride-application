@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { User } from 'src/app/models/User';
-import { AuthService } from 'src/app/services/auth.service';
-import { UserService } from 'src/app/services/user.service';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {User} from 'src/app/models/User';
+import {AuthService} from 'src/app/services/auth.service';
+import {UserService} from 'src/app/services/user.service';
 
 
 @Component({
@@ -18,16 +18,16 @@ export class HeaderComponent {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private userService: UserService) { }
+    private userService: UserService) {
+  }
 
   ngOnInit(): void {
     this.userService.getUser().subscribe({
       next: data => {
-        if(data.user) {
+        if (data.user) {
           this.loggedInUser = data.user
           this.isLoggedIn = true
-        }
-        else {
+        } else {
           this.isLoggedIn = false
         }
       }

@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Reservation } from 'src/app/models/Reservation';
-import { User } from 'src/app/models/User';
-import { ReservationService } from 'src/app/services/reservation.service';
-import { UserService } from 'src/app/services/user.service';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {Reservation} from 'src/app/models/Reservation';
+import {User} from 'src/app/models/User';
+import {ReservationService} from 'src/app/services/reservation.service';
+import {UserService} from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-profile',
@@ -20,7 +20,8 @@ export class ProfileComponent implements OnInit {
   constructor(
     private userService: UserService,
     private reservationService: ReservationService,
-    private router: Router) { }
+    private router: Router) {
+  }
 
   ngOnInit(): void {
     this.userService.getUser().subscribe({
@@ -43,18 +44,17 @@ export class ProfileComponent implements OnInit {
 
     this.reservationService.getDriverCreatedReservations().subscribe({
       next: data => {
-        console.log(data)
         this.driverReservations = data
       }
     })
   }
 
-  updateUser(id: number){
-    this.router.navigate(['update',id])
+  updateUser(id: number) {
+    this.router.navigate(['update', id])
   }
 
-  updateVehicle(id: number){
-    this.router.navigate(['vehicle',id])
+  updateVehicle(id: number) {
+    this.router.navigate(['vehicle', id])
   }
 
 }

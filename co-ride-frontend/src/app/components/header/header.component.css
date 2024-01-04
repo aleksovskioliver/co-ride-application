@@ -22,18 +22,16 @@
 .login-button {
   color: var(--main-dark-color);
   font-weight: bold;
-  background-color: var(--light-color); /* Set default background color */
+  background-color: var(--light-color);
 }
 
 .register-button:hover,
 .login-button:hover {
-  background-color: var(--main-dark-color); /* Swap to main-dark-color on hover */
-  color: var(--light-color); /* Swap to light-color on hover */
-  transition: background-color 0.3s, color 0.3s; /* Add a smooth transition effect */
+  background-color: var(--main-dark-color);
+  color: var(--light-color);
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .user-email {
   color: var(--light-color);
 }
-
-/* Add any additional styling as needed */

@@ -34,18 +34,19 @@ input {
 }
 
 input:focus {
-  background-color: #f8f9fa; /* Lighter color on focus */
+  background-color: #f8f9fa;
 }
 
-.btn-outline-dark{
-  background-color: var(--main-bg-color); /* Change the button color */
+.btn-outline-dark {
+  background-color: var(--main-bg-color);
   border: none;
 }
-.btn-check:checked + .btn{
+
+.btn-check:checked + .btn {
   background-color: var(--main-dark-color) !important;
 }
 
-.btn-custom{
+.btn-custom {
   color: white;
   background-color: var(--main-dark-color) !important;
 }

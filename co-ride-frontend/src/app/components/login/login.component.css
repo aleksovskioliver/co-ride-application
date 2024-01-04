@@ -23,12 +23,12 @@
 }
 
 .btn-primary {
-  background-color: var(--main-dark-color); /* Change the button color */
+  background-color: var(--main-dark-color);
   border: none;
 }
 
 .btn-primary:hover {
-  background-color: #2b7a78; /* Darker color on hover */
+  background-color: #2b7a78;
 }
 
 .link-dark {

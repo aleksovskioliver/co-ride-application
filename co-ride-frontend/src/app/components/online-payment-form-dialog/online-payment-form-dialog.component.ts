@@ -6,10 +6,10 @@ import {PaymentService} from "../../services/payment.service";
 
 @Component({
   selector: 'app-payment-form',
-  templateUrl: './payment-form-dialog.component.html',
-  styleUrls: ['./payment-form-dialog.component.css']
+  templateUrl: './online-payment-form-dialog.component.html',
+  styleUrls: ['./online-payment-form-dialog.component.css']
 })
-export class PaymentFormDialogComponent implements OnInit {
+export class OnlinePaymentFormDialogComponent implements OnInit {
   stripeTest!: FormGroup;
   elements: any;
   card: any;
@@ -19,7 +19,7 @@ export class PaymentFormDialogComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private stripeService: StripeService,
               private paymentService: PaymentService,
-              private dialogRef: MatDialogRef<PaymentFormDialogComponent>,
+              private dialogRef: MatDialogRef<OnlinePaymentFormDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any) {
   }
 

@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
-import { Reservation } from 'src/app/models/Reservation';
-import { ReservationService } from 'src/app/services/reservation.service';
+import {Component, OnInit} from '@angular/core';
+import {FormControl} from '@angular/forms';
+import {ActivatedRoute} from '@angular/router';
+import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs';
+import {ReservationService} from 'src/app/services/reservation.service';
 import {ReservationResponse} from "../../models/ReservationResponse";
 
 @Component({
@@ -19,24 +18,24 @@ export class SearchComponent implements OnInit {
   searchField2 = new FormControl('');
 
   constructor(private service: ReservationService,
-    private route: ActivatedRoute) { }
+              private route: ActivatedRoute) {
+  }
 
   ngOnInit(): void {
     this.getReservations();
   }
 
-  getReservations(){
+  getReservations() {
     this.route.queryParams.pipe(
       debounceTime(300),
       distinctUntilChanged(),
-      switchMap(queryParams=>this.service.getReservations(this.searchField.value as string,this.searchField2.value as string))
+      switchMap(queryParams => this.service.getReservations(this.searchField.value as string, this.searchField2.value as string))
     ).subscribe({
-      next: (data)=>{
-        console.log('data', data)
+      next: (data) => {
         this.loading = false
         this.reservations = data
       },
-      error: (error)=> console.log("get reservation error", error)
+      error: (error) => console.log("get reservation error", error)
     })
   }
 }

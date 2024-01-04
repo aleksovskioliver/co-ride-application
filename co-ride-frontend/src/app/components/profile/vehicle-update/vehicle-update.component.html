@@ -3,24 +3,24 @@
     <h3 class="mb-2 text-center border-bottom">Change Vehicle</h3>
     <form (ngSubmit)="onSubmit()">
       <div class="form-group mb-2">
-        <label for="make">Make</label>
+        <label for="make">Производител</label>
         <input type="text" class="form-control" id="make"
                required [(ngModel)]="vehicle.make" name="make">
       </div>
 
       <div class="form-group mb-2">
-        <label for="model">Model</label>
+        <label for="model">Модел</label>
         <input type="text" class="form-control" id="model"
                required [(ngModel)]="vehicle.model" name="model">
       </div>
 
       <div class="form-group mb-2">
-        <label for="seats">Seats</label>
+        <label for="seats">Број на седишта</label>
         <input type="text" class="form-control" id="seats"
                required [(ngModel)]="vehicle.seats" name="seats">
       </div>
       <div class="form-group mt-4">
-        <button type="submit" class="form-control btn btn-dark btn-custom">Submit</button>
+        <button type="submit" class="form-control btn btn-dark btn-custom">Зачувај</button>
       </div>
     </form>
   </div>
