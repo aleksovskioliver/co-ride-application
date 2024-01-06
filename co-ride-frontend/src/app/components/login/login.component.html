@@ -1,27 +1,27 @@
 <div class="h-100 d-flex align-items-center">
   <div class="card login-form rounded">
-    <h1 class="mb-2 text-center border-bottom">Login</h1>
+    <h1 class="mb-2 text-center border-bottom">Најава</h1>
     <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
       <div class="form-group mb-3">
         <div class="input-group">
           <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-          <input type="text" formControlName="email" id="email" class="form-control" placeholder="Email"
+          <input type="text" formControlName="email" id="email" class="form-control" placeholder="Електронска адреса"
                  [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" />
         </div>
         <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
-          <div *ngIf="f['email'].errors['required']">Email is required</div>
-          <div *ngIf="f['email'].errors['email']">Email is invalid</div>
+          <div *ngIf="f['email'].errors['required']">Електронската адреса е задолжителна</div>
+          <div *ngIf="f['email'].errors['email']">Невалидна електронска адреса</div>
         </div>
       </div>
 
       <div class="form-group mb-3">
         <div class="input-group">
           <span class="input-group-text"><i class="fas fa-lock"></i></span>
-          <input type="password" formControlName="password" id="password" class="form-control" placeholder="Password"
+          <input type="password" formControlName="password" id="password" class="form-control" placeholder="Лозинка"
                  [ngClass]="{ 'is-invalid': submitted && f['password'].errors }" />
         </div>
         <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
-          <div *ngIf="f['password'].errors['required']">Password is required</div>
+          <div *ngIf="f['password'].errors['required']">Лозинката е задолжителна</div>
         </div>
       </div>
 
@@ -30,9 +30,9 @@
       </div>
 
       <div class="form-group mt-4">
-        <button type="submit" class="btn btn-primary form-control">Login</button>
+        <button type="submit" class="btn btn-primary form-control">Најави се</button>
       </div>
-      <div class="text-center mt-2 text-muted">Don't have an account? <a class="link-dark" routerLink="/register">Sign Up</a></div>
+      <div class="text-center mt-2 text-muted">Немаш корисничка сметка? <a class="link-dark" routerLink="/register">Регистрирај се тука</a></div>
     </form>
   </div>
 </div>

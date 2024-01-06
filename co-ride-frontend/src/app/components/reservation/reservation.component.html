@@ -108,6 +108,8 @@
             <div>
               <fa-icon [icon]="'circle-user'"></fa-icon>
               {{r.driver.firstName}} {{r.driver.lastName}}
+            </div>
+            <div>
               <ngx-stars [readonly]="false" (ratingOutput)="onRateChange(r.driver, $event)"></ngx-stars>
             </div>
             <div>

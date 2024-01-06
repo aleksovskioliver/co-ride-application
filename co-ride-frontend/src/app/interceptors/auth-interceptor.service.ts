@@ -8,9 +8,7 @@ import {Observable} from 'rxjs';
 export class AuthInterceptorService implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
     const idToken = localStorage.getItem("id_token");
-
     if (idToken) {
       const cloned = req.clone({
         setHeaders: {

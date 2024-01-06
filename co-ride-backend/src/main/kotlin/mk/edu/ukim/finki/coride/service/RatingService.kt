@@ -15,12 +15,18 @@ class RatingService(
     fun save(request: RatingRequest): Rating {
         val driver = userService.findUserById(request.driverId)
         val rider = userService.getUserByEmail(SecurityContextHolder.getContext().authentication.name)!!
-        return repository.save(Rating(
-                id = 0L,
-                driver = driver,
-                score = request.score,
-                rider = rider
-        ))
+        val alreadyExisting = repository.findByDriverAndRider(driver, rider)
+        if (alreadyExisting == null){
+            return repository.save(Rating(
+                    id = 0L,
+                    driver = driver,
+                    score = request.score,
+                    rider = rider
+            ))
+        }else {
+            throw Exception("Rating already exists!")
+        }
+
     }
 
     fun getAverageRatingForDriver(driver: User) = repository.findAllByDriver(driver)

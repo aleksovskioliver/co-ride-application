@@ -21,8 +21,7 @@ const routes: Routes = [
   {path: "vehicle/:id", component: VehicleUpdateComponent},
   {path: "update/:id", component: UpdateComponent},
   {path: "reservation/update/:id", component: UpdateFormComponent},
-  {path: "", redirectTo: "home", pathMatch: "full"},
-
+  {path: "", redirectTo: "home", pathMatch: "full"}
 ];
 
 @NgModule({

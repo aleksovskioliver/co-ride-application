@@ -33,13 +33,9 @@ data class User(
         val reservations: MutableList<Reservation> = mutableListOf(),
         @OneToOne
         @JoinColumn(name = "vehicle_id")
-        var vehicle: Vehicle? = null,
-        @ElementCollection
-        @CollectionTable(name = "user_ratings", joinColumns = [JoinColumn(name = "user_id")])
-        @Column(name = "rating")
-        val ratings: MutableList<Int>? = mutableListOf()
+        var vehicle: Vehicle? = null
 ) {
-        override fun toString(): String {
-                return "User(id=$id, username=$firstName, email=$email, ...)"
-        }
+    override fun toString(): String {
+        return "User(id=$id, username=$firstName, email=$email, ...)"
+    }
 }

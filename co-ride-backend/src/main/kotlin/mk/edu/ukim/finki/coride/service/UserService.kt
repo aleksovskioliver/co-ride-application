@@ -20,9 +20,9 @@ import org.springframework.transaction.annotation.Transactional
 
 @Service
 class UserService(
-    val userRepository: UserRepository,
-    val vehicleService: VehicleService,
-    val passwordEncoder: PasswordEncoder
+        val userRepository: UserRepository,
+        val vehicleService: VehicleService,
+        val passwordEncoder: PasswordEncoder
 ) {
 
     val logger: Logger = LoggerFactory.getLogger(UserService::class.java)
@@ -45,8 +45,15 @@ class UserService(
 
 
     @Transactional
-    fun updateUserById(id: Long, user: CreateUserRequest){
-        userRepository.updateUser(id,user.firstName,user.lastName,user.phoneNumber)
+    fun updateUserById(id: Long, user: CreateUserRequest) {
+        val alreadyExisting = this.findUserById(id)
+        val isPasswordChanged = alreadyExisting.password == user.password
+        if (isPasswordChanged) {
+            userRepository.updateUser(id, user.firstName, user.lastName, user.phoneNumber, alreadyExisting.password)
+        } else {
+            userRepository.updateUser(id, user.firstName, user.lastName, user.phoneNumber, passwordEncoder.encode(user.password))
+
+        }
     }
 
     fun createUser(newUser: CreateUserRequest): User {
@@ -55,16 +62,16 @@ class UserService(
         }
 
         val user = User(
-            0,
-            newUser.firstName,
-            newUser.lastName,
-            newUser.phoneNumber,
-            newUser.email,
-            passwordEncoder.encode(newUser.password),
-            if (newUser.role.contains("driver"))
-                Role.ROLE_DRIVER
-            else
-                Role.ROLE_CUSTOMER
+                0,
+                newUser.firstName,
+                newUser.lastName,
+                newUser.phoneNumber,
+                newUser.email,
+                passwordEncoder.encode(newUser.password),
+                if (newUser.role.contains("driver"))
+                    Role.ROLE_DRIVER
+                else
+                    Role.ROLE_CUSTOMER
         )
         logger.info("[{}]", user)
 
@@ -73,7 +80,8 @@ class UserService(
 
         return userRepository.save(user)
     }
-    fun updateUserReservations(user: User, reservation: Reservation){
+
+    fun updateUserReservations(user: User, reservation: Reservation) {
         this.findUserById(user.id).copy(
                 reservations = user.reservations.plus(reservation).toMutableList()
         ).let { userRepository.save(it) }
